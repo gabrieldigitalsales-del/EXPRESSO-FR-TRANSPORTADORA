@@ -15,7 +15,10 @@ function animateLoader(now) {
   if (pct < 1) loaderFrame = requestAnimationFrame(animateLoader);
 }
 loaderFrame = requestAnimationFrame(animateLoader);
-window.addEventListener('load', () => {
+let loaderDismissed = false;
+function dismissLoader() {
+  if (loaderDismissed) return;
+  loaderDismissed = true;
   const elapsed = performance.now() - loaderStartedAt;
   const remaining = Math.max(0, LOADER_DURATION - elapsed);
   setTimeout(() => {
@@ -24,7 +27,15 @@ window.addEventListener('load', () => {
     setTimeout(() => loader?.remove(), reduceMotion ? 80 : 700);
     window.scrollTo(0, 0);
   }, remaining);
-});
+}
+
+if (document.readyState === 'complete') {
+  dismissLoader();
+} else {
+  window.addEventListener('load', dismissLoader, { once: true });
+}
+// Fallback: o site nunca fica preso na tela de carregamento.
+setTimeout(dismissLoader, LOADER_DURATION + 1200);
 
 // Header + scroll progress
 const header = document.getElementById('header');
