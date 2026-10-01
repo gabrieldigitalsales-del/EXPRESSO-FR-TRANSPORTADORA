@@ -47,3 +47,7 @@ V26: 10 upgrades reais aplicados; placeholders da cotação removidos. Veja AUDI
 V27: removidos os números 01–05 da seção 'Como funciona'.
 
 Ajuste final: WhatsApp preservado exatamente como no ZIP aprovado; e-mail remodelado e telefone/Instagram/localização padronizados na mesma família visual.
+
+Hero simplificado: removidos blocos redundantes e card lateral; carrossel reduzido para duas imagens placeholder.
+
+Hero clean v2: cotação retirada de cima do hero, contraste ajustado, textos encurtados e dois placeholders de caminhão aplicados ao carrossel.
