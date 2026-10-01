@@ -45,3 +45,5 @@ V25: ícone de e-mail substituído por SVG real no estilo da referência e campo
 V26: 10 upgrades reais aplicados; placeholders da cotação removidos. Veja AUDITORIA-V26.md.
 
 V27: removidos os números 01–05 da seção 'Como funciona'.
+
+Ajuste final: WhatsApp preservado exatamente como no ZIP aprovado; e-mail remodelado e telefone/Instagram/localização padronizados na mesma família visual.
