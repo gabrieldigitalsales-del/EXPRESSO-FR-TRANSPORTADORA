@@ -54,7 +54,7 @@
     <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4M7 11l3-3 3 2 4-4"/></symbol>
     <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4 3.4-6 8-6s7.2 2 8 6"/></symbol>
     <symbol id="i-phone" viewBox="0 0 24 24"><path d="M7 3 4.5 4.5c-.7.7-.6 2.3.1 4.1 1.8 4.6 6.2 9 10.8 10.8 1.8.7 3.4.8 4.1.1L21 17l-4.5-2-1.5 1.5c-2.6-1.2-5.3-3.9-6.5-6.5L10 8.5 7 3Z"/></symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.5"/><rect x="7" y="8" width="10" height="8" rx="0.8"/><path d="m7.8 9.2 4.2 3.4 4.2-3.4"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9.25"/><rect x="6.9" y="8" width="10.2" height="8" rx="0.9"/><path d="M7.8 9.1 12 12.45 16.2 9.1"/></symbol>
     <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M8 8l4-4 4 4M4 14v6h16v-6"/></symbol>
     <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4.5"/><circle cx="12" cy="12" r="4.25"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></symbol>
     <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M8 10v7M8 7v.1M12 17v-4c0-2 3-2 3 0v4M12 10v7"/></symbol>
@@ -89,13 +89,13 @@
     <section class="hero" id="inicio">
       <div class="hero-slides" aria-hidden="true">
         <div class="hero-slide has-watermark is-active" data-kicker="15 anos de estrada" data-title-1="Movendo cargas." data-title-2="Construindo confiança." data-text="Uma trajetória construída com segurança, pontualidade e compromisso com operações que não podem parar.">
-          <img src="assets/real/hero-real-01.webp" alt="" fetchpriority="high" decoding="async">
+          <img src="assets/real/hero-real-01.webp" alt="" width="1600" height="900" fetchpriority="high" decoding="async">
         </div>
         <div class="hero-slide has-watermark" data-kicker="Operações críticas" data-title-1="Prazo sob controle." data-title-2="Carga sob monitoramento." data-text="Da urgência à previsibilidade, a Expresso FR atende rotas que exigem resposta rápida e acompanhamento contínuo.">
-          <img src="assets/real/hero-real-02.webp" alt="" decoding="async">
+          <img src="assets/real/hero-real-02.webp" alt="" width="1600" height="900" fetchpriority="low" decoding="async">
         </div>
         <div class="hero-slide has-watermark" data-kicker="Cobertura nacional" data-title-1="Estrutura preparada." data-title-2="Atuação em todo o Brasil." data-text="Frota, parceiros e planejamento logístico para diferentes perfis de demanda, com foco em eficiência operacional.">
-          <img src="assets/real/hero-real-03.webp" alt="" decoding="async">
+          <img src="assets/real/hero-real-03.webp" alt="" width="1600" height="900" fetchpriority="low" decoding="async">
         </div>
       </div>
       <div class="hero-overlay"></div>
@@ -169,8 +169,9 @@
           <div class="form-step is-active" data-step-panel="0">
             <div class="form-step-head"><small>Etapa 1 de 4</small><h3>Responsável pela solicitação</h3></div>
             <div class="field-grid two">
-              <label>Nome completo<input id="qResponsavel" required autocomplete="name" placeholder="Seu nome"></label>
-              <label>Telefone / WhatsApp<input id="qTelefone" required autocomplete="tel" inputmode="tel" maxlength="15" placeholder="(31) 97553-5768"></label>
+              <label>Nome completo<input id="qResponsavel" required autocomplete="name"></label>
+              <label>Telefone / WhatsApp<input id="qTelefone" required autocomplete="tel" inputmode="tel" maxlength="15"></label>
+              <label class="wide-field">CPF / CNPJ do cliente<input id="qClienteDocumento" class="doc-field" required inputmode="text"></label>
             </div>
             <div class="step-actions">
               <span class="step-hint">Usaremos estes dados apenas para retorno da cotação.</span>
@@ -181,9 +182,11 @@
           <div class="form-step" data-step-panel="1">
             <div class="form-step-head"><small>Etapa 2 de 4</small><h3>Dados da coleta</h3></div>
             <div class="field-grid two">
-              <label>Nome da empresa da coleta<input id="qColetaEmpresa" required placeholder="Ex.: CIE Forjas"></label>
-              <label>Cidade da coleta<input id="qColetaCidade" required placeholder="Ex.: Sete Lagoas / MG"></label>
-              <label class="wide-field">Endereço da empresa da coleta<input id="qColetaEndereco" required autocomplete="street-address" placeholder="Rua, número, bairro e complemento"></label>
+              <label>Nome da empresa da coleta<input id="qColetaEmpresa" required></label>
+              <label>Cidade da coleta<input id="qColetaCidade" required></label>
+              <label>CPF / CNPJ do remetente<input id="qColetaDocumento" class="doc-field" required inputmode="text"></label>
+              <label>CEP da coleta<input id="qColetaCep" class="cep-field" required inputmode="numeric" maxlength="9"></label>
+              <label class="wide-field">Endereço da empresa da coleta<input id="qColetaEndereco" required autocomplete="street-address"></label>
             </div>
             <div class="step-actions between">
               <button type="button" class="btn btn-outline-dark prev-step" data-prev="0">Voltar</button>
@@ -194,9 +197,11 @@
           <div class="form-step" data-step-panel="2">
             <div class="form-step-head"><small>Etapa 3 de 4</small><h3>Dados do destino</h3></div>
             <div class="field-grid two">
-              <label>Nome da empresa destino<input id="qDestinoEmpresa" required placeholder="Ex.: Bosch"></label>
-              <label>Cidade destino<input id="qDestinoCidade" required placeholder="Ex.: Sorocaba / SP"></label>
-              <label class="wide-field">Endereço da empresa destino<input id="qDestinoEndereco" required autocomplete="street-address" placeholder="Rua, número, bairro e complemento"></label>
+              <label>Nome da empresa destino<input id="qDestinoEmpresa" required></label>
+              <label>Cidade destino<input id="qDestinoCidade" required></label>
+              <label>CPF / CNPJ do destinatário<input id="qDestinoDocumento" class="doc-field" required inputmode="text"></label>
+              <label>CEP do destino<input id="qDestinoCep" class="cep-field" required inputmode="numeric" maxlength="9"></label>
+              <label class="wide-field">Endereço da empresa destino<input id="qDestinoEndereco" required autocomplete="street-address"></label>
             </div>
             <div class="step-actions between">
               <button type="button" class="btn btn-outline-dark prev-step" data-prev="1">Voltar</button>
@@ -207,8 +212,8 @@
           <div class="form-step" data-step-panel="3">
             <div class="form-step-head"><small>Etapa 4 de 4</small><h3>Informações da carga</h3></div>
             <div class="field-grid cargo-grid">
-              <label>Volumes<input id="qVolumes" required inputmode="numeric" placeholder="Ex.: 5"></label>
-              <label>Peso total<input id="qPeso" required inputmode="decimal" placeholder="Ex.: 1.000 kg"></label>
+              <label>Volumes<input id="qVolumes" required inputmode="numeric"></label>
+              <label>Peso total<input id="qPeso" required inputmode="decimal"></label>
               <label>Tipo de carga<select id="qTipo"><option>Carga dedicada</option><option>Carga expressa</option><option>Carga fracionada</option><option>Consolidação de cargas</option><option>Just-in-Time</option><option>Operação especial</option></select></label>
               <label>Urgência<select id="qUrgencia"><option>Normal</option><option>Urgente</option><option>Data programada</option></select></label>
             </div>
@@ -220,18 +225,24 @@
               </div>
               <div id="measureRows" class="measure-rows">
                 <div class="measure-row">
-                  <label>Comprimento<input class="measure-length" inputmode="decimal" placeholder="1"></label>
-                  <label>Largura<input class="measure-width" inputmode="decimal" placeholder="1,20"></label>
-                  <label>Altura<input class="measure-height" inputmode="decimal" placeholder="1"></label>
+                  <label>Qtd.<input class="measure-qty" inputmode="numeric" type="number" min="1" value="1"></label>
+                  <label>Comprimento<input class="measure-length" inputmode="decimal"></label>
+                  <label>Largura<input class="measure-width" inputmode="decimal"></label>
+                  <label>Altura<input class="measure-height" inputmode="decimal"></label>
                   <button type="button" class="remove-measure" aria-label="Remover medida">×</button>
                 </div>
               </div>
               <button type="button" id="addMeasure" class="add-measure">+ Adicionar outra medida</button>
+              <div class="cubage-summary" aria-live="polite">
+                <span>Cubagem estimada</span>
+                <strong id="cubageValue">0,000 m³</strong>
+                <small>Calculada automaticamente a partir das medidas informadas.</small>
+              </div>
             </div>
 
             <div class="field-grid two">
               <label>Anexo <small class="field-help">opcional</small><div class="upload-inline"><input type="file" id="qArquivo" accept="image/*,.pdf"><svg><use href="#i-upload"/></svg><span id="fileLabel">Selecionar imagem ou PDF</span></div><small class="attachment-note">Após abrir o WhatsApp, anexe o documento manualmente.</small></label>
-              <label>Observações<textarea id="qObs" rows="4" placeholder="Informações adicionais da carga, horários, restrições ou particularidades..."></textarea></label>
+              <label>Observações<textarea id="qObs" rows="4"></textarea></label>
             </div>
 
             <div class="step-actions between">
@@ -292,7 +303,7 @@
 
         <div class="service-editorial">
           <article class="service-card service-card-large reveal">
-            <div class="service-media has-watermark"><img src="assets/real/service-real-01.webp" alt="Carga dedicada em rodovia" loading="lazy" decoding="async"></div>
+            <div class="service-media has-watermark"><img src="assets/real/service-real-01.webp" alt="Carga dedicada em rodovia" width="1200" height="760" loading="lazy" decoding="async"></div>
             <div class="service-content">
               <span class="service-tag">Carga dedicada</span>
               <h3>Controle, previsibilidade e operação sob medida.</h3>
@@ -302,7 +313,7 @@
           </article>
 
           <article class="service-card reveal">
-            <div class="service-media has-watermark"><img src="assets/real/service-real-02.webp" alt="Operação expressa" loading="lazy" decoding="async"></div>
+            <div class="service-media has-watermark"><img src="assets/real/service-real-02.webp" alt="Operação expressa" width="1200" height="760" loading="lazy" decoding="async"></div>
             <div class="service-content">
               <span class="service-tag">Carga expressa</span>
               <h3>Resposta rápida para prazos críticos.</h3>
@@ -333,6 +344,22 @@
               </ul>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="process light" id="processo">
+      <div class="shell">
+        <div class="section-head compact reveal">
+          <div><span class="eyebrow green">Como funciona</span><h2>Da cotação à entrega, com acompanhamento em cada etapa.</h2></div>
+          <p>Um fluxo simples para transformar as informações da carga em uma operação organizada, segura e rastreável.</p>
+        </div>
+        <div class="process-flow reveal">
+          <article><svg><use href="#i-box"/></svg><h3>Cotação</h3><p>Você envia os dados da carga, coleta e destino.</p></article>
+          <article><svg><use href="#i-user"/></svg><h3>Análise</h3><p>A equipe comercial avalia a necessidade e retorna com a proposta.</p></article>
+          <article><svg><use href="#i-truck"/></svg><h3>Coleta</h3><p>A operação é programada conforme rota, janela e disponibilidade.</p></article>
+          <article><svg><use href="#i-monitor"/></svg><h3>Monitoramento</h3><p>Acompanhamento durante o transporte para ampliar a previsibilidade.</p></article>
+          <article><svg><use href="#i-pin"/></svg><h3>Entrega</h3><p>Conclusão da operação no destino combinado.</p></article>
         </div>
       </div>
     </section>
@@ -436,6 +463,11 @@
 
     <section class="trust-band light">
       <div class="shell trust-wrap reveal">
+        <div class="trust-facts">
+          <div><strong>15 anos</strong><span>de experiência</span></div>
+          <div><strong>24h</strong><span>de monitoramento</span></div>
+          <div><strong>Brasil</strong><span>cobertura nacional</span></div>
+        </div>
         <span class="eyebrow green">Empresas parceiras</span>
         <div class="logo-marquee">
           <div class="logo-track">
@@ -459,7 +491,7 @@
         </div>
         <div class="contact-panel reveal">
           <a class="contact-item" href="tel:+5531975535768"><svg><use href="#i-phone"/></svg><div><small>Telefone</small><strong>(31) 97553-5768</strong></div></a>
-          <a class="contact-item" href="mailto:contato@expressofr.com.br"><span class="social-icon social-email" aria-hidden="true"></span><div><small>E-mail</small><strong>contato@expressofr.com.br</strong></div></a>
+          <a class="contact-item" href="mailto:contato@expressofr.com.br"><svg><use href="#i-mail"/></svg><div><small>E-mail</small><strong>contato@expressofr.com.br</strong></div></a>
           <a class="contact-item" href="https://instagram.com/expressofr.transportes" target="_blank" rel="noreferrer"><span class="social-icon social-instagram" aria-hidden="true"></span><div><small>Instagram</small><strong>@expressofr.transportes</strong></div></a>
           <div class="contact-item"><svg><use href="#i-pin"/></svg><div><small>Base</small><strong>Av. Secretário Divino Padrão, 680 · Sete Lagoas / MG</strong></div></div>
         </div>
@@ -516,7 +548,7 @@
         <div>
           <h4>Contato</h4>
           <a href="tel:+5531975535768"><svg><use href="#i-phone"/></svg> (31) 97553-5768</a>
-          <a href="mailto:contato@expressofr.com.br"><span class="social-icon social-email" aria-hidden="true"></span> contato@expressofr.com.br</a>
+          <a href="mailto:contato@expressofr.com.br"><svg><use href="#i-mail"/></svg> contato@expressofr.com.br</a>
           <a href="https://wa.me/5531975535768" target="_blank" rel="noreferrer"><span class="social-icon social-whatsapp" aria-hidden="true"></span> WhatsApp</a>
           <a href="https://instagram.com/expressofr.transportes" target="_blank" rel="noreferrer"><span class="social-icon social-instagram" aria-hidden="true"></span> @expressofr.transportes</a>
         </div>

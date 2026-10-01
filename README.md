@@ -36,3 +36,12 @@ V21: ícone do WhatsApp redesenhado e centralizado, com botão flutuante em verd
 V22: símbolo do WhatsApp recriado com desenho mais limpo e melhor centralização.
 
 V23: WhatsApp, Instagram e e-mail passaram a usar máscaras recortadas a partir das referências exatas enviadas pelo cliente, sem fundo e sem desenho manual.
+
+V24: ícone de e-mail substituído pela referência enviada pelo cliente, com máscara refinada e melhor centralização.
+
+V25: ícone de e-mail substituído por SVG real no estilo da referência e campos de CPF/CNPJ adicionados para cliente, remetente e destinatário na cotação.
+
+
+V26: 10 upgrades reais aplicados; placeholders da cotação removidos. Veja AUDITORIA-V26.md.
+
+V27: removidos os números 01–05 da seção 'Como funciona'.

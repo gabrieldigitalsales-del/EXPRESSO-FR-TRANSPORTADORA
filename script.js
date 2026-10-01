@@ -180,9 +180,9 @@ const quoteForm = document.getElementById('quoteForm');
 let currentStep = 0;
 
 const stepFields = [
-  ['qResponsavel', 'qTelefone'],
-  ['qColetaEmpresa', 'qColetaCidade', 'qColetaEndereco'],
-  ['qDestinoEmpresa', 'qDestinoCidade', 'qDestinoEndereco'],
+  ['qResponsavel', 'qTelefone', 'qClienteDocumento'],
+  ['qColetaEmpresa', 'qColetaCidade', 'qColetaDocumento', 'qColetaCep', 'qColetaEndereco'],
+  ['qDestinoEmpresa', 'qDestinoCidade', 'qDestinoDocumento', 'qDestinoCep', 'qDestinoEndereco'],
   ['qVolumes', 'qPeso']
 ];
 
@@ -220,6 +220,26 @@ function validateStep(step) {
       return false;
     }
   }
+  const docId = step === 0 ? 'qClienteDocumento' : step === 1 ? 'qColetaDocumento' : step === 2 ? 'qDestinoDocumento' : null;
+  if (docId) {
+    const doc = document.getElementById(docId);
+    if (!isValidDocument(doc?.value || '')) {
+      doc?.classList.add('invalid');
+      if (statusEl) statusEl.textContent = 'Informe um CPF ou CNPJ válido.';
+      doc?.focus();
+      return false;
+    }
+  }
+  const cepId = step === 1 ? 'qColetaCep' : step === 2 ? 'qDestinoCep' : null;
+  if (cepId) {
+    const cep = document.getElementById(cepId);
+    if ((cep?.value || '').replace(/\D/g,'').length !== 8) {
+      cep?.classList.add('invalid');
+      if (statusEl) statusEl.textContent = 'Informe um CEP válido com 8 dígitos.';
+      cep?.focus();
+      return false;
+    }
+  }
   return true;
 }
 function validateThrough(step) {
@@ -252,6 +272,37 @@ phoneInput?.addEventListener('input', () => {
   else phoneInput.value = `(${digits.slice(0,2)}) ${digits.slice(2,7)}-${digits.slice(7)}`;
 });
 
+function formatDocument(value='') {
+  const d = value.replace(/\D/g,'').slice(0,14);
+  if (d.length <= 11) {
+    return d.replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d{1,2})$/,'$1-$2');
+  }
+  return d.replace(/(\d{2})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1.$2').replace(/(\d{3})(\d)/,'$1/$2').replace(/(\d{4})(\d{1,2})$/,'$1-$2');
+}
+function isValidCPF(value='') {
+  const cpf=value.replace(/\D/g,'');
+  if (cpf.length!==11 || /^(\d)\1+$/.test(cpf)) return false;
+  const calc=(base,factor)=>{let total=0; for(const n of base) total += Number(n)*factor--; const r=(total*10)%11; return r===10?0:r;};
+  return calc(cpf.slice(0,9),10)===Number(cpf[9]) && calc(cpf.slice(0,10),11)===Number(cpf[10]);
+}
+function isValidCNPJ(value='') {
+  const cnpj=value.replace(/\D/g,'');
+  if (cnpj.length!==14 || /^(\d)\1+$/.test(cnpj)) return false;
+  const digit=(base,weights)=>{let sum=0; base.split('').forEach((n,i)=>sum+=Number(n)*weights[i]); const r=sum%11; return r<2?0:11-r;};
+  const w1=[5,4,3,2,9,8,7,6,5,4,3,2], w2=[6,5,4,3,2,9,8,7,6,5,4,3,2];
+  return digit(cnpj.slice(0,12),w1)===Number(cnpj[12]) && digit(cnpj.slice(0,13),w2)===Number(cnpj[13]);
+}
+function isValidDocument(value='') {
+  const d=value.replace(/\D/g,'');
+  return d.length===11 ? isValidCPF(d) : d.length===14 ? isValidCNPJ(d) : false;
+}
+document.querySelectorAll('.doc-field').forEach(input=>input.addEventListener('input',()=>{input.value=formatDocument(input.value);}));
+
+document.querySelectorAll('.cep-field').forEach(input=>input.addEventListener('input',()=>{
+  const d=input.value.replace(/\D/g,'').slice(0,8);
+  input.value=d.length>5?`${d.slice(0,5)}-${d.slice(5)}`:d;
+}));
+
 // Attachment feedback
 const fileInput = document.getElementById('qArquivo');
 const fileLabel = document.getElementById('fileLabel');
@@ -267,9 +318,10 @@ function createMeasureRow() {
   const row = document.createElement('div');
   row.className = 'measure-row';
   row.innerHTML = `
-    <label>Comprimento<input class="measure-length" inputmode="decimal" placeholder="1"></label>
-    <label>Largura<input class="measure-width" inputmode="decimal" placeholder="1,20"></label>
-    <label>Altura<input class="measure-height" inputmode="decimal" placeholder="1"></label>
+    <label>Qtd.<input class="measure-qty" inputmode="numeric" type="number" min="1" value="1"></label>
+    <label>Comprimento<input class="measure-length" inputmode="decimal"></label>
+    <label>Largura<input class="measure-width" inputmode="decimal"></label>
+    <label>Altura<input class="measure-height" inputmode="decimal"></label>
     <button type="button" class="remove-measure" aria-label="Remover medida">×</button>`;
   return row;
 }
@@ -283,26 +335,52 @@ function updateMeasureRemoveButtons() {
 addMeasureBtn?.addEventListener('click', () => {
   measureRows?.appendChild(createMeasureRow());
   updateMeasureRemoveButtons();
+  calculateCubage();
 });
 measureRows?.addEventListener('click', e => {
   const btn = e.target.closest('.remove-measure');
   if (!btn || btn.disabled) return;
   btn.closest('.measure-row')?.remove();
   updateMeasureRemoveButtons();
+  calculateCubage();
 });
 updateMeasureRemoveButtons();
+calculateCubage();
 
+function parseMeasureNumber(value='') {
+  const n=Number(value.replace(' ', '').replace(',', '.'));
+  return Number.isFinite(n) && n > 0 ? n : 0;
+}
 function getMeasurements() {
   const unit = document.getElementById('qMedidaUnidade')?.value || 'm';
   const rows = Array.from(document.querySelectorAll('.measure-row'));
   return rows.map((row, index) => {
+    const qty = Math.max(1, Number(row.querySelector('.measure-qty')?.value || 1));
     const length = row.querySelector('.measure-length')?.value.trim() || '';
     const width = row.querySelector('.measure-width')?.value.trim() || '';
     const height = row.querySelector('.measure-height')?.value.trim() || '';
     if (!length && !width && !height) return null;
-    return `${index + 1}. ${length || '?'} × ${width || '?'} × ${height || '?'} ${unit}`;
+    return `${index + 1}. ${qty} volume(s) — ${length || '?'} × ${width || '?'} × ${height || '?'} ${unit}`;
   }).filter(Boolean);
 }
+function calculateCubage() {
+  const unit=document.getElementById('qMedidaUnidade')?.value || 'm';
+  const divisor=unit==='cm' ? 1000000 : 1;
+  let total=0;
+  document.querySelectorAll('.measure-row').forEach(row=>{
+    const qty=Math.max(1,Number(row.querySelector('.measure-qty')?.value || 1));
+    const l=parseMeasureNumber(row.querySelector('.measure-length')?.value || '');
+    const w=parseMeasureNumber(row.querySelector('.measure-width')?.value || '');
+    const h=parseMeasureNumber(row.querySelector('.measure-height')?.value || '');
+    if(l&&w&&h) total += (l*w*h*qty)/divisor;
+  });
+  const el=document.getElementById('cubageValue');
+  if(el) el.textContent=`${total.toLocaleString('pt-BR',{minimumFractionDigits:3,maximumFractionDigits:3})} m³`;
+  return total;
+}
+measureRows?.addEventListener('input', calculateCubage);
+document.getElementById('qMedidaUnidade')?.addEventListener('change', calculateCubage);
+calculateCubage();
 
 const WA = '5531975535768';
 function getQuoteData() {
@@ -310,17 +388,23 @@ function getQuoteData() {
   return {
     responsavel: g('qResponsavel'),
     tel: g('qTelefone'),
+    clienteDocumento: g('qClienteDocumento'),
     coletaEmpresa: g('qColetaEmpresa'),
     coletaCidade: g('qColetaCidade'),
+    coletaDocumento: g('qColetaDocumento'),
+    coletaCep: g('qColetaCep'),
     coletaEndereco: g('qColetaEndereco'),
     destinoEmpresa: g('qDestinoEmpresa'),
     destinoCidade: g('qDestinoCidade'),
+    destinoDocumento: g('qDestinoDocumento'),
+    destinoCep: g('qDestinoCep'),
     destinoEndereco: g('qDestinoEndereco'),
     volumes: g('qVolumes'),
     peso: g('qPeso'),
     tipo: g('qTipo'),
     urgencia: g('qUrgencia'),
     medidas: getMeasurements(),
+    cubagem: calculateCubage(),
     obs: g('qObs'),
     fileName: fileInput?.files?.[0]?.name || ''
   };
@@ -333,15 +417,20 @@ function quoteMessage(data) {
     '*RESPONSÁVEL*',
     `Nome: ${data.responsavel}`,
     `Telefone / WhatsApp: ${data.tel}`,
+    `CPF / CNPJ do cliente: ${data.clienteDocumento}`,
     '',
     '*COLETA*',
     `Empresa: ${data.coletaEmpresa}`,
     `Cidade: ${data.coletaCidade}`,
+    `CPF / CNPJ do remetente: ${data.coletaDocumento}`,
+    `CEP: ${data.coletaCep}`,
     `Endereço: ${data.coletaEndereco}`,
     '',
     '*DESTINO*',
     `Empresa: ${data.destinoEmpresa}`,
     `Cidade: ${data.destinoCidade}`,
+    `CPF / CNPJ do destinatário: ${data.destinoDocumento}`,
+    `CEP: ${data.destinoCep}`,
     `Endereço: ${data.destinoEndereco}`,
     '',
     '*CARGA*',
@@ -350,6 +439,7 @@ function quoteMessage(data) {
     `Tipo: ${data.tipo}`,
     `Urgência: ${data.urgencia}`,
     `Medidas:\n${measures}`,
+    `Cubagem estimada: ${data.cubagem.toLocaleString('pt-BR',{minimumFractionDigits:3,maximumFractionDigits:3})} m³`,
     `Observações: ${data.obs || 'Não informado'}`
   ];
   if (data.fileName) {
@@ -367,10 +457,10 @@ function escapeHtml(value='') {
 function renderReview(data) {
   const measureList = data.medidas.length ? data.medidas.map(m => `<li>${escapeHtml(m)}</li>`).join('') : '<li>Não informado</li>';
   reviewContent.innerHTML = `
-    <section><small>Responsável</small><strong>${escapeHtml(data.responsavel)}</strong><span>${escapeHtml(data.tel)}</span></section>
-    <section><small>Coleta</small><strong>${escapeHtml(data.coletaEmpresa)}</strong><span>${escapeHtml(data.coletaCidade)}</span><span>${escapeHtml(data.coletaEndereco)}</span></section>
-    <section><small>Destino</small><strong>${escapeHtml(data.destinoEmpresa)}</strong><span>${escapeHtml(data.destinoCidade)}</span><span>${escapeHtml(data.destinoEndereco)}</span></section>
-    <section><small>Carga</small><strong>${escapeHtml(data.volumes)} volume(s) · ${escapeHtml(data.peso)}</strong><span>${escapeHtml(data.tipo)} · ${escapeHtml(data.urgencia)}</span><ul>${measureList}</ul>${data.obs ? `<span>${escapeHtml(data.obs)}</span>` : ''}</section>`;
+    <section><small>Responsável</small><strong>${escapeHtml(data.responsavel)}</strong><span>${escapeHtml(data.tel)}</span><span>CPF / CNPJ: ${escapeHtml(data.clienteDocumento)}</span></section>
+    <section><small>Coleta</small><strong>${escapeHtml(data.coletaEmpresa)}</strong><span>${escapeHtml(data.coletaCidade)}</span><span>CPF / CNPJ: ${escapeHtml(data.coletaDocumento)}</span><span>CEP: ${escapeHtml(data.coletaCep)}</span><span>${escapeHtml(data.coletaEndereco)}</span></section>
+    <section><small>Destino</small><strong>${escapeHtml(data.destinoEmpresa)}</strong><span>${escapeHtml(data.destinoCidade)}</span><span>CPF / CNPJ: ${escapeHtml(data.destinoDocumento)}</span><span>CEP: ${escapeHtml(data.destinoCep)}</span><span>${escapeHtml(data.destinoEndereco)}</span></section>
+    <section><small>Carga</small><strong>${escapeHtml(data.volumes)} volume(s) · ${escapeHtml(data.peso)}</strong><span>${escapeHtml(data.tipo)} · ${escapeHtml(data.urgencia)}</span><span>Cubagem: ${data.cubagem.toLocaleString('pt-BR',{minimumFractionDigits:3,maximumFractionDigits:3})} m³</span><ul>${measureList}</ul>${data.obs ? `<span>${escapeHtml(data.obs)}</span>` : ''}</section>`;
 }
 document.getElementById('reviewQuote')?.addEventListener('click', () => {
   if (!validateThrough(3)) return;

@@ -634,7 +634,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .social-icon{display:inline-block;width:18px;height:18px;flex:0 0 18px;background-color:currentColor;vertical-align:middle;mask-repeat:no-repeat;mask-position:center;mask-size:contain;-webkit-mask-repeat:no-repeat;-webkit-mask-position:center;-webkit-mask-size:contain}
 .social-whatsapp{mask-image:url('./assets/icons/whatsapp-mask.png');-webkit-mask-image:url('./assets/icons/whatsapp-mask.png')}
 .social-instagram{mask-image:url('./assets/icons/instagram-mask.png');-webkit-mask-image:url('./assets/icons/instagram-mask.png')}
-.social-email{mask-image:url('./assets/icons/email-mask.png');-webkit-mask-image:url('./assets/icons/email-mask.png')}
+.social-email{mask-image:url('./assets/icons/email-mask.png');-webkit-mask-image:url('./assets/icons/email-mask.png');mask-size:88%;-webkit-mask-size:88%}
 .btn-whatsapp .social-whatsapp{width:18px;height:18px;flex-basis:18px}
 .quote-mini-points .social-whatsapp{color:#59e5a6}
 .contact-item .social-icon{color:#6aeeb5;width:18px;height:18px}
@@ -644,3 +644,81 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .floating-wa:before{display:none}
 .floating-wa .social-whatsapp{width:29px;height:29px;flex-basis:29px;color:#fff;margin:0}
 .mobile-whatsapp .social-whatsapp{width:17px;height:17px;flex-basis:17px;color:#06110b}
+
+.contact-item .social-email{width:19px;height:19px;flex-basis:19px}
+.footer-columns .social-email{width:17px;height:17px;flex-basis:17px}
+
+
+/* V25 email icon + quote documents */
+.doc-field{text-transform:none}
+.contact-item svg use[href="#i-mail"], .footer-columns svg use[href="#i-mail"]{}
+
+
+/* V26 — upgrades reais de cotação, processo, confiança e mobile */
+.process{padding:92px 0 98px;background:linear-gradient(180deg,#f7f7f3,#eef1ec)}
+.process-flow{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}
+.process-flow:before{content:"";position:absolute;left:8%;right:8%;top:45px;height:1px;background:linear-gradient(90deg,rgba(18,133,82,.10),rgba(18,133,82,.5),rgba(18,133,82,.10))}
+.process-flow article{position:relative;z-index:1;background:#fff;border:1px solid #dbe2dc;padding:22px 18px 20px;min-height:190px;box-shadow:0 16px 34px rgba(8,19,15,.055);transition:transform .35s var(--ease),border-color .35s ease,box-shadow .35s ease}
+.process-flow article:hover{transform:translateY(-4px);border-color:rgba(18,133,82,.34);box-shadow:0 22px 46px rgba(8,19,15,.09)}
+.process-flow article>span{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border:1px solid #cce0d5;background:#f7fff9;color:#138653;font-size:10px;font-weight:800;letter-spacing:.1em}
+.process-flow svg{display:block;width:26px;height:26px;margin:20px 0 14px;fill:none;stroke:#138653;stroke-width:1.55}
+.process-flow h3{margin:0 0 7px;font:800 20px/1.05 Manrope,sans-serif;letter-spacing:-.03em;color:#102018}
+.process-flow p{margin:0;color:#627068;font-size:12px;line-height:1.65}
+
+.cubage-summary{margin-top:14px;padding:15px 16px;border:1px solid #d9e3dc;background:linear-gradient(135deg,#f8fff9,#f4f8f5);display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 16px}
+.cubage-summary span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#5a6960;font-weight:800}
+.cubage-summary strong{grid-column:2;grid-row:1 / span 2;font:800 24px/1 Manrope,sans-serif;color:#0f7f4e;letter-spacing:-.04em}
+.cubage-summary small{font-size:11px;color:#768078}
+.measure-row{grid-template-columns:.65fr 1fr 1fr 1fr 36px!important}
+.measure-row .measure-qty{min-width:0}
+.doc-field,.cep-field{font-variant-numeric:tabular-nums;letter-spacing:.01em}
+
+.trust-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+.trust-facts div{padding:16px 18px;border:1px solid #dbe2dd;background:#fff}
+.trust-facts strong{display:block;font:800 24px/1 Manrope,sans-serif;color:#0f251a;letter-spacing:-.04em}
+.trust-facts span{display:block;margin-top:5px;color:#69766e;font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+
+/* identidade final: bordas mais quadradas e estados consistentes */
+.btn,.premium-form input,.premium-form select,.premium-form textarea,.contact-item,.service-card,.timeline article,.process-flow article,.trust-facts div{border-radius:2px}
+.premium-form input,.premium-form select,.premium-form textarea{min-height:48px}
+.premium-form label{line-height:1.25}
+.premium-form .field-help{font-weight:500;color:#718078}
+
+@media(max-width:1100px){
+  .process-flow{grid-template-columns:repeat(3,1fr)}
+  .process-flow:before{display:none}
+}
+@media(max-width:720px){
+  .process{padding:66px 0 72px}
+  .process-flow{grid-template-columns:1fr;gap:8px}
+  .process-flow article{min-height:auto;display:grid;grid-template-columns:36px 32px 1fr;column-gap:12px;align-items:start;padding:16px}
+  .process-flow article>span{grid-column:1;grid-row:1 / span 2}
+  .process-flow svg{grid-column:2;grid-row:1 / span 2;margin:2px 0 0;width:22px;height:22px}
+  .process-flow h3{grid-column:3;margin:0 0 4px;font-size:17px}
+  .process-flow p{grid-column:3;font-size:11px}
+  .trust-facts{grid-template-columns:1fr 1fr 1fr;gap:6px}
+  .trust-facts div{padding:12px 10px}
+  .trust-facts strong{font-size:18px}
+  .trust-facts span{font-size:9px;letter-spacing:.07em}
+  .measure-row{grid-template-columns:1fr 1fr!important;gap:9px!important;padding:12px!important}
+  .measure-row .remove-measure{grid-column:2;justify-self:end}
+  .cubage-summary{grid-template-columns:1fr;padding:13px 14px}
+  .cubage-summary strong{grid-column:1;grid-row:auto;font-size:22px;margin-top:3px}
+  .form-steps-nav{overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+  .form-steps-nav::-webkit-scrollbar{display:none}
+  .step-tab{min-width:max-content}
+  .step-actions.between{gap:8px}
+  .step-actions.between .btn{flex:1}
+}
+@media(max-width:390px){
+  .premium-form{padding:18px 14px}
+  .form-step-head h3{font-size:21px}
+  .field-grid.two,.cargo-grid{gap:10px}
+  .trust-facts{grid-template-columns:1fr}
+  .trust-facts div{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+  .trust-facts span{margin-top:0;text-align:right}
+}
+
+
+/* V27 remove números da seção Como funciona */
+.process-flow article > span{display:none!important}
