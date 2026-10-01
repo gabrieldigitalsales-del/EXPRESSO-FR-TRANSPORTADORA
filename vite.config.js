@@ -1,0 +1,15 @@
+import { defineConfig } from 'vite';
+import { resolve } from 'node:path';
+
+export default defineConfig({
+  build: {
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'index.html'),
+        privacidade: resolve(__dirname, 'privacidade.html'),
+        termos: resolve(__dirname, 'termos.html'),
+        notFound: resolve(__dirname, '404.html')
+      }
+    }
+  }
+});

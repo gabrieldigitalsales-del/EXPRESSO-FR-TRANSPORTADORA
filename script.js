@@ -3,20 +3,27 @@ window.scrollTo(0, 0);
 
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Loader
+// Loader — 2 seconds
 const loader = document.getElementById('siteLoader');
 const loaderLine = document.getElementById('loaderLine');
-let loadPct = 0;
-const loaderTimer = setInterval(() => {
-  loadPct = Math.min(loadPct + (loadPct < 60 ? 6 : loadPct < 82 ? 2.6 : 1.2), 92);
-  if (loaderLine) loaderLine.style.width = loadPct + '%';
-}, 80);
+const loaderStartedAt = performance.now();
+const LOADER_DURATION = reduceMotion ? 120 : 2000;
+let loaderFrame = null;
+function animateLoader(now) {
+  const pct = Math.min((now - loaderStartedAt) / LOADER_DURATION, 1);
+  if (loaderLine) loaderLine.style.width = `${pct * 100}%`;
+  if (pct < 1) loaderFrame = requestAnimationFrame(animateLoader);
+}
+loaderFrame = requestAnimationFrame(animateLoader);
 window.addEventListener('load', () => {
-  clearInterval(loaderTimer);
-  if (loaderLine) loaderLine.style.width = '100%';
-  setTimeout(() => loader?.classList.add('hidden'), reduceMotion ? 20 : 250);
-  setTimeout(() => loader?.remove(), reduceMotion ? 80 : 950);
-  window.scrollTo(0, 0);
+  const elapsed = performance.now() - loaderStartedAt;
+  const remaining = Math.max(0, LOADER_DURATION - elapsed);
+  setTimeout(() => {
+    if (loaderLine) loaderLine.style.width = '100%';
+    loader?.classList.add('hidden');
+    setTimeout(() => loader?.remove(), reduceMotion ? 80 : 700);
+    window.scrollTo(0, 0);
+  }, remaining);
 });
 
 // Header + scroll progress
@@ -154,40 +161,85 @@ document.addEventListener('visibilitychange', () => {
   }
 });
 
-// Two-step quote form
+// Quote form — four steps
 const stepTabs = Array.from(document.querySelectorAll('.step-tab'));
 const stepPanels = Array.from(document.querySelectorAll('.form-step'));
 const statusEl = document.getElementById('formStatus');
+const quoteForm = document.getElementById('quoteForm');
 let currentStep = 0;
+
+const stepFields = [
+  ['qResponsavel', 'qTelefone'],
+  ['qColetaEmpresa', 'qColetaCidade', 'qColetaEndereco'],
+  ['qDestinoEmpresa', 'qDestinoCidade', 'qDestinoEndereco'],
+  ['qVolumes', 'qPeso']
+];
+
 function showStep(step) {
-  currentStep = step;
-  stepTabs.forEach((tab, i) => tab.classList.toggle('is-active', i === step));
-  stepPanels.forEach((panel, i) => panel.classList.toggle('is-active', i === step));
+  currentStep = Math.max(0, Math.min(step, stepPanels.length - 1));
+  stepTabs.forEach((tab, i) => tab.classList.toggle('is-active', i === currentStep));
+  stepPanels.forEach((panel, i) => panel.classList.toggle('is-active', i === currentStep));
+  if (window.innerWidth < 720) {
+    document.querySelector('.premium-form')?.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+  }
 }
 function clearInvalid() {
   document.querySelectorAll('.premium-form .invalid').forEach(el => el.classList.remove('invalid'));
-  if (statusEl) { statusEl.textContent = ''; statusEl.classList.remove('ok'); }
+  if (statusEl) {
+    statusEl.textContent = '';
+    statusEl.classList.remove('ok');
+  }
 }
-function validateStepOne() {
+function validateStep(step) {
   clearInvalid();
-  const ids = ['qNome', 'qTelefone', 'qOrigem', 'qDestino'];
-  const missing = ids.map(id => document.getElementById(id)).filter(el => !el?.value.trim());
+  const missing = (stepFields[step] || []).map(id => document.getElementById(id)).filter(el => !el?.value.trim());
   if (missing.length) {
     missing.forEach(el => el.classList.add('invalid'));
-    if (statusEl) statusEl.textContent = 'Preencha nome/empresa, telefone, origem e destino para continuar.';
+    if (statusEl) statusEl.textContent = 'Preencha os campos obrigatórios destacados para continuar.';
     missing[0]?.focus();
     return false;
   }
+  if (step === 0) {
+    const tel = document.getElementById('qTelefone');
+    const digits = (tel?.value || '').replace(/\D/g, '');
+    if (digits.length < 10) {
+      tel?.classList.add('invalid');
+      if (statusEl) statusEl.textContent = 'Informe um telefone válido com DDD.';
+      tel?.focus();
+      return false;
+    }
+  }
   return true;
 }
+function validateThrough(step) {
+  for (let i = 0; i <= step; i++) {
+    if (!validateStep(i)) {
+      showStep(i);
+      return false;
+    }
+  }
+  return true;
+}
+
 stepTabs.forEach((tab, index) => tab.addEventListener('click', () => {
-  if (index === 1 && !validateStepOne()) return;
+  if (index > currentStep && !validateThrough(index - 1)) return;
   showStep(index);
 }));
-document.querySelector('.next-step')?.addEventListener('click', () => {
-  if (validateStepOne()) showStep(1);
+document.querySelectorAll('.next-step').forEach(btn => btn.addEventListener('click', () => {
+  const next = Number(btn.dataset.next || currentStep + 1);
+  if (validateStep(currentStep)) showStep(next);
+}));
+document.querySelectorAll('.prev-step').forEach(btn => btn.addEventListener('click', () => showStep(Number(btn.dataset.prev || 0))));
+
+// Phone mask
+const phoneInput = document.getElementById('qTelefone');
+phoneInput?.addEventListener('input', () => {
+  let digits = phoneInput.value.replace(/\D/g, '').slice(0, 11);
+  if (digits.length <= 2) phoneInput.value = digits ? `(${digits}` : '';
+  else if (digits.length <= 7) phoneInput.value = `(${digits.slice(0,2)}) ${digits.slice(2)}`;
+  else if (digits.length <= 10) phoneInput.value = `(${digits.slice(0,2)}) ${digits.slice(2,6)}-${digits.slice(6)}`;
+  else phoneInput.value = `(${digits.slice(0,2)}) ${digits.slice(2,7)}-${digits.slice(7)}`;
 });
-document.querySelector('.prev-step')?.addEventListener('click', () => showStep(0));
 
 // Attachment feedback
 const fileInput = document.getElementById('qArquivo');
@@ -197,44 +249,143 @@ fileInput?.addEventListener('change', () => {
   if (fileLabel) fileLabel.textContent = file ? file.name : 'Selecionar imagem ou PDF';
 });
 
-// WhatsApp quote
-const WA = '5531994422324';
+// Measurements
+const measureRows = document.getElementById('measureRows');
+const addMeasureBtn = document.getElementById('addMeasure');
+function createMeasureRow() {
+  const row = document.createElement('div');
+  row.className = 'measure-row';
+  row.innerHTML = `
+    <label>Comprimento<input class="measure-length" inputmode="decimal" placeholder="1"></label>
+    <label>Largura<input class="measure-width" inputmode="decimal" placeholder="1,20"></label>
+    <label>Altura<input class="measure-height" inputmode="decimal" placeholder="1"></label>
+    <button type="button" class="remove-measure" aria-label="Remover medida">×</button>`;
+  return row;
+}
+function updateMeasureRemoveButtons() {
+  const rows = measureRows?.querySelectorAll('.measure-row') || [];
+  rows.forEach(row => {
+    const btn = row.querySelector('.remove-measure');
+    if (btn) btn.disabled = rows.length === 1;
+  });
+}
+addMeasureBtn?.addEventListener('click', () => {
+  measureRows?.appendChild(createMeasureRow());
+  updateMeasureRemoveButtons();
+});
+measureRows?.addEventListener('click', e => {
+  const btn = e.target.closest('.remove-measure');
+  if (!btn || btn.disabled) return;
+  btn.closest('.measure-row')?.remove();
+  updateMeasureRemoveButtons();
+});
+updateMeasureRemoveButtons();
+
+function getMeasurements() {
+  const unit = document.getElementById('qMedidaUnidade')?.value || 'm';
+  const rows = Array.from(document.querySelectorAll('.measure-row'));
+  return rows.map((row, index) => {
+    const length = row.querySelector('.measure-length')?.value.trim() || '';
+    const width = row.querySelector('.measure-width')?.value.trim() || '';
+    const height = row.querySelector('.measure-height')?.value.trim() || '';
+    if (!length && !width && !height) return null;
+    return `${index + 1}. ${length || '?'} × ${width || '?'} × ${height || '?'} ${unit}`;
+  }).filter(Boolean);
+}
+
+const WA = '5531975535768';
+function getQuoteData() {
+  const g = id => document.getElementById(id)?.value?.trim() || '';
+  return {
+    responsavel: g('qResponsavel'),
+    tel: g('qTelefone'),
+    coletaEmpresa: g('qColetaEmpresa'),
+    coletaCidade: g('qColetaCidade'),
+    coletaEndereco: g('qColetaEndereco'),
+    destinoEmpresa: g('qDestinoEmpresa'),
+    destinoCidade: g('qDestinoCidade'),
+    destinoEndereco: g('qDestinoEndereco'),
+    volumes: g('qVolumes'),
+    peso: g('qPeso'),
+    tipo: g('qTipo'),
+    urgencia: g('qUrgencia'),
+    medidas: getMeasurements(),
+    obs: g('qObs'),
+    fileName: fileInput?.files?.[0]?.name || ''
+  };
+}
 function quoteMessage(data) {
+  const measures = data.medidas.length ? data.medidas.join('\n') : 'Não informado';
   const lines = [
-    'Olá, Expresso FR! Gostaria de solicitar uma cotação de frete.',
+    '*SOLICITAÇÃO DE COTAÇÃO — EXPRESSO FR*',
     '',
-    `Nome / Empresa: ${data.nome}`,
-    `Telefone: ${data.tel}`,
-    `Origem: ${data.origem}`,
-    `Destino: ${data.destino}`,
-    `Tipo de carga: ${data.tipo}`,
-    `Peso aproximado: ${data.peso || 'Não informado'}`,
-    `Urgência: ${data.urgencia || 'Não informada'}`,
+    '*RESPONSÁVEL*',
+    `Nome: ${data.responsavel}`,
+    `Telefone / WhatsApp: ${data.tel}`,
+    '',
+    '*COLETA*',
+    `Empresa: ${data.coletaEmpresa}`,
+    `Cidade: ${data.coletaCidade}`,
+    `Endereço: ${data.coletaEndereco}`,
+    '',
+    '*DESTINO*',
+    `Empresa: ${data.destinoEmpresa}`,
+    `Cidade: ${data.destinoCidade}`,
+    `Endereço: ${data.destinoEndereco}`,
+    '',
+    '*CARGA*',
+    `Volumes: ${data.volumes}`,
+    `Peso total: ${data.peso}`,
+    `Tipo: ${data.tipo}`,
+    `Urgência: ${data.urgencia}`,
+    `Medidas:\n${measures}`,
     `Observações: ${data.obs || 'Não informado'}`
   ];
   if (data.fileName) {
-    lines.push('', `Arquivo selecionado no site: ${data.fileName}`, 'Vou anexar esse arquivo manualmente nesta conversa.');
+    lines.push('', `Arquivo selecionado: ${data.fileName}`, 'O arquivo será anexado manualmente nesta conversa.');
   }
   return lines.join('\n');
 }
-document.getElementById('quoteForm')?.addEventListener('submit', e => {
-  e.preventDefault();
-  if (!validateStepOne()) {
-    showStep(0);
-    return;
-  }
-  const g = id => document.getElementById(id)?.value?.trim() || '';
-  const fileName = fileInput?.files?.[0]?.name || '';
-  const msg = quoteMessage({
-    nome: g('qNome'), tel: g('qTelefone'), origem: g('qOrigem'), destino: g('qDestino'),
-    tipo: g('qTipo'), peso: g('qPeso'), urgencia: g('qUrgencia'), obs: g('qObs'), fileName
-  });
+
+// Review modal before WhatsApp
+const reviewDialog = document.getElementById('quoteReview');
+const reviewContent = document.getElementById('reviewContent');
+function escapeHtml(value='') {
+  return value.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+}
+function renderReview(data) {
+  const measureList = data.medidas.length ? data.medidas.map(m => `<li>${escapeHtml(m)}</li>`).join('') : '<li>Não informado</li>';
+  reviewContent.innerHTML = `
+    <section><small>Responsável</small><strong>${escapeHtml(data.responsavel)}</strong><span>${escapeHtml(data.tel)}</span></section>
+    <section><small>Coleta</small><strong>${escapeHtml(data.coletaEmpresa)}</strong><span>${escapeHtml(data.coletaCidade)}</span><span>${escapeHtml(data.coletaEndereco)}</span></section>
+    <section><small>Destino</small><strong>${escapeHtml(data.destinoEmpresa)}</strong><span>${escapeHtml(data.destinoCidade)}</span><span>${escapeHtml(data.destinoEndereco)}</span></section>
+    <section><small>Carga</small><strong>${escapeHtml(data.volumes)} volume(s) · ${escapeHtml(data.peso)}</strong><span>${escapeHtml(data.tipo)} · ${escapeHtml(data.urgencia)}</span><ul>${measureList}</ul>${data.obs ? `<span>${escapeHtml(data.obs)}</span>` : ''}</section>`;
+}
+document.getElementById('reviewQuote')?.addEventListener('click', () => {
+  if (!validateThrough(3)) return;
+  const data = getQuoteData();
+  renderReview(data);
+  if (reviewDialog?.showModal) reviewDialog.showModal();
+  else reviewDialog?.setAttribute('open', '');
+});
+document.getElementById('reviewClose')?.addEventListener('click', () => reviewDialog?.close());
+document.getElementById('reviewEdit')?.addEventListener('click', () => reviewDialog?.close());
+reviewDialog?.addEventListener('click', e => {
+  if (e.target === reviewDialog) reviewDialog.close();
+});
+document.getElementById('reviewSend')?.addEventListener('click', () => {
+  const data = getQuoteData();
+  const msg = quoteMessage(data);
   if (statusEl) {
-    statusEl.textContent = fileName ? 'O WhatsApp será aberto. Lembre-se de anexar o arquivo selecionado manualmente.' : 'Abrindo o WhatsApp com os dados da cotação.';
+    statusEl.textContent = data.fileName
+      ? 'O WhatsApp será aberto. Depois, anexe manualmente o arquivo selecionado.'
+      : 'Abrindo o WhatsApp com a cotação organizada.';
     statusEl.classList.add('ok');
   }
+  reviewDialog?.close();
   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener,noreferrer');
 });
+quoteForm?.addEventListener('submit', e => e.preventDefault());
 
 // FAQ
 const faqButtons = document.querySelectorAll('.faq-list article button');
