@@ -1,21 +1,18 @@
-# Expresso FR V17 — Vite corrigido
+# Expresso FR — V18 Vite
 
-## Executar localmente
-```powershell
+Alterações desta versão:
+- faixas horizontais mais finas no desktop e no mobile;
+- removidas as imagens de caminhões geradas anteriormente;
+- site usando somente as fotos reais da frota enviadas pela Expresso FR nas áreas de caminhão;
+- hero com três fotos reais tratadas apenas para enquadramento web;
+- duas fotos reais usadas nos serviços;
+- cards restantes usam composição gráfica, sem caminhão artificial;
+- bloco de 15 anos sem foto repetida;
+- parceiros mantidos conforme lista informada;
+- projeto Vite preservado.
+
+## Rodar
+```bash
 npm install
 npm run dev
 ```
-Abra o endereço exibido pelo Vite, normalmente `http://localhost:5173`.
-
-## Build de produção
-```powershell
-npm run build
-npm run preview
-```
-
-## Correções V17
-- `vite.config.js` corrigido para ESM (sem `__dirname` inválido).
-- `script.js` agora é carregado como módulo e entra corretamente no build do Vite.
-- loader com fallback para nunca prender a página em branco.
-- `base: './'` para caminhos de build mais robustos.
-- parceiros e demais alterações da V16 preservados.

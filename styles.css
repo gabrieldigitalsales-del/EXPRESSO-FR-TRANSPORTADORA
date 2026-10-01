@@ -473,3 +473,52 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 .contact{background:radial-gradient(circle at 78% 18%,rgba(38,215,132,.12),transparent 26%),linear-gradient(135deg,#07100c,#0d1b14 55%,#07100c)}
 .contact:before{background:linear-gradient(90deg,rgba(7,15,11,.15),rgba(7,15,11,.05))}
 @media(max-width:820px){.story-single,.story-photo{min-height:320px}.story-badge{margin-top:12px}}
+
+/* V18 — faixas mais finas + apenas fotos reais da frota */
+.motion-strip{padding:6px 0!important;box-shadow:0 0 14px rgba(57,255,136,.18),inset 0 1px 0 rgba(255,255,255,.14)}
+.motion-strip-group{gap:15px!important;padding-right:15px!important}
+.motion-strip-group span{font-size:12px!important;letter-spacing:.11em!important}
+.motion-strip-group i{font-size:10px!important}
+.motion-strip:before,.motion-strip:after{width:54px!important}
+
+.trust-band{padding:12px 0 42px!important}
+.trust-wrap{gap:8px!important}
+.logo-marquee{padding:7px 0!important}
+.logo-track{gap:34px!important}
+.logo-track span{font-size:18px!important;letter-spacing:.02em!important}
+
+.service-graphic{position:relative;min-height:240px!important;background:
+  radial-gradient(circle at 78% 18%,rgba(57,255,136,.18),transparent 24%),
+  linear-gradient(135deg,#0b1510 0%,#0f2118 55%,#07100c 100%);display:grid;place-items:center;overflow:hidden}
+.service-graphic:before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(96,239,177,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(96,239,177,.07) 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent)}
+.service-graphic:after{content:"";position:absolute;width:70%;height:2px;background:linear-gradient(90deg,transparent,#59efa9,transparent);transform:rotate(-16deg);box-shadow:0 0 18px rgba(89,239,169,.35)}
+.service-graphic-inner{position:relative;z-index:2;display:grid;justify-items:center;text-align:center;gap:9px;padding:24px}
+.service-graphic-icon{width:34px;height:34px;fill:none;stroke:#59efa9;stroke-width:1.35}
+.service-graphic-inner span{font:800 18px/1 Manrope,sans-serif;letter-spacing:.11em;color:#f5f9f7}
+.service-graphic-inner small{font-size:11px;color:#9eb0a7;letter-spacing:.03em}
+.route-graphic:after{transform:rotate(12deg);width:82%}
+
+.story-graphic{min-height:460px;background:
+  radial-gradient(circle at 72% 28%,rgba(42,221,137,.15),transparent 26%),
+  linear-gradient(145deg,#0a1510,#12271c 58%,#08100c);color:#fff;position:relative;overflow:hidden;border:1px solid rgba(15,37,25,.08);box-shadow:0 20px 50px rgba(8,19,15,.10);display:flex;align-items:flex-end;padding:34px}
+.story-graphic:before{content:"";position:absolute;inset:-10% -20%;background:repeating-linear-gradient(115deg,transparent 0 70px,rgba(72,236,157,.045) 70px 72px);transform:translateX(10%)}
+.story-number{position:absolute;right:-8px;top:-22px;font:800 clamp(180px,22vw,360px)/.82 Manrope,sans-serif;letter-spacing:-.09em;color:rgba(102,239,180,.08);user-select:none}
+.story-graphic-copy{position:relative;z-index:2;display:grid;gap:10px;max-width:480px}
+.story-graphic-copy small{font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:#62efb0;font-weight:800}
+.story-graphic-copy strong{font:800 clamp(30px,3.3vw,50px)/1 Manrope,sans-serif;letter-spacing:-.045em}
+.story-graphic-copy span{font-size:13px;color:#b7c5bd;line-height:1.65}
+
+@media(max-width:720px){
+  .motion-strip{padding:5px 0!important}
+  .motion-strip-group{gap:12px!important;padding-right:12px!important}
+  .motion-strip-group span{font-size:10px!important;letter-spacing:.09em!important}
+  .motion-strip-group i{font-size:8px!important}
+  .motion-strip:before,.motion-strip:after{width:26px!important}
+  .trust-band{padding:8px 0 28px!important}
+  .logo-marquee{padding:6px 0!important}
+  .logo-track{gap:24px!important}
+  .logo-track span{font-size:15px!important}
+  .service-graphic{min-height:200px!important}
+  .story-graphic{min-height:340px;padding:24px}
+  .story-number{font-size:170px;right:-10px;top:0}
+}
