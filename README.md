@@ -51,3 +51,5 @@ Ajuste final: WhatsApp preservado exatamente como no ZIP aprovado; e-mail remode
 Hero simplificado: removidos blocos redundantes e card lateral; carrossel reduzido para duas imagens placeholder.
 
 Hero clean v2: cotação retirada de cima do hero, contraste ajustado, textos encurtados e dois placeholders de caminhão aplicados ao carrossel.
+
+Mobile Focus V3: desktop preservado; header, hero, carrossel, cotação, formulário, espaçamentos, footer e CTA móvel refinados exclusivamente abaixo de 720px.

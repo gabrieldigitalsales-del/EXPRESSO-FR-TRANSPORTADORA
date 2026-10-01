@@ -558,3 +558,35 @@ faqButtons.forEach(btn => {
     });
   });
 });
+
+
+// Mobile CTA behavior: appear after leaving the hero, hide while quote area is visible.
+(() => {
+  const bar = document.querySelector('.mobile-cta-bar');
+  const hero = document.querySelector('.hero');
+  const quote = document.querySelector('.quote-section');
+  if (!bar || !hero || !quote) return;
+
+  let heroVisible = true;
+  let quoteVisible = false;
+
+  const sync = () => {
+    const mobile = window.matchMedia('(max-width: 720px)').matches;
+    bar.classList.toggle('is-visible', mobile && !heroVisible && !quoteVisible);
+  };
+
+  const heroObserver = new IntersectionObserver(([entry]) => {
+    heroVisible = entry.isIntersecting;
+    sync();
+  }, { threshold: .12 });
+
+  const quoteObserver = new IntersectionObserver(([entry]) => {
+    quoteVisible = entry.isIntersecting;
+    sync();
+  }, { threshold: .08 });
+
+  heroObserver.observe(hero);
+  quoteObserver.observe(quote);
+  window.addEventListener('resize', sync, { passive:true });
+  sync();
+})();
