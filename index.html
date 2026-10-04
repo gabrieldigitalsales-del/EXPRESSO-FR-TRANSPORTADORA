@@ -2,32 +2,26 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#0a140f" />
-  <title>Expresso FR | 15 anos em transporte rodoviário</title>
-  <meta name="description" content="Expresso FR: 15 anos em transporte rodoviário com cargas dedicadas, expressas, fracionadas, operações especiais e cotação direta pelo WhatsApp." />
-  <meta property="og:title" content="Expresso FR | Logística rodoviária com 15 anos de estrada" />
-  <meta property="og:description" content="Segurança, agilidade, monitoramento 24h e atendimento consultivo para operações que não podem parar." />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <title>Expresso FR | Transporte Rodoviário de Carga Dedicada</title>
+  <meta name="description" content="Expresso FR: 15 anos em transporte rodoviário com foco em carga dedicada, monitoramento e cotação direta pelo WhatsApp." />
+  <meta property="og:title" content="Expresso FR | Carga dedicada com segurança e previsibilidade" />
+  <meta property="og:description" content="Transporte rodoviário dedicado com planejamento, monitoramento e atendimento próximo." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.expressofr.com.br/" />
-  <meta property="og:image" content="https://www.expressofr.com.br/assets/real/hero-real-01.webp" />
+  <meta property="og:image" content="https://www.expressofr.com.br/assets/img/real-07.webp" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Expresso FR | Logística rodoviária com 15 anos de estrada" />
-  <meta name="twitter:description" content="Segurança, agilidade, monitoramento 24h e atendimento consultivo para operações que não podem parar." />
-  <meta name="twitter:image" content="https://www.expressofr.com.br/assets/real/hero-real-01.webp" />
   <link rel="canonical" href="https://www.expressofr.com.br/" />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="preload" as="image" href="assets/real/hero-real-01.webp" fetchpriority="high" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="/assets/favicon.png" />
+  <link rel="preload" as="image" href="/assets/img/real-07.webp" fetchpriority="high" />
+  <link rel="stylesheet" href="/styles.css" />
   <script type="application/ld+json">{
     "@context":"https://schema.org",
     "@type":"Organization",
     "name":"Expresso FR",
     "url":"https://www.expressofr.com.br/",
-    "logo":"https://www.expressofr.com.br/assets/logo-fr-optimized.webp",
+    "logo":"https://www.expressofr.com.br/assets/logo-fr.webp",
     "telephone":"+55 31 97553-5768",
     "email":"contato@expressofr.com.br",
     "address":{"@type":"PostalAddress","streetAddress":"Av. Secretário Divino Padrão, 680","addressLocality":"Sete Lagoas","addressRegion":"MG","addressCountry":"BR"},
@@ -35,526 +29,243 @@
   }</script>
 </head>
 <body>
-  <div class="site-loader" id="siteLoader" aria-hidden="true">
-    <div class="loader-box">
-      <img src="assets/logo-fr-optimized.webp" alt="Expresso FR" class="loader-logo">
-      <div class="loader-line"><span id="loaderLine"></span></div>
-      <p>Carregando a experiência</p>
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <img src="/assets/logo-fr.webp" alt="" class="loader__logo" />
+      <div class="loader__track"><span></span></div>
     </div>
   </div>
 
-  <svg class="svg-defs" aria-hidden="true" focusable="false">
+  <svg class="svg-sprite" aria-hidden="true" focusable="false">
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.9-2.8 8-7 10-4.2-2-7-5.1-7-10V6l7-3Z"/><path d="m9.5 12 1.7 1.7 3.5-4"/></symbol>
-    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></symbol>
-    <symbol id="i-pin" viewBox="0 0 24 24">
-      <path d="M12 20.2s5.15-4.52 5.15-9.22A5.15 5.15 0 1 0 6.85 10.98C6.85 15.68 12 20.2 12 20.2Z"/>
-      <circle cx="12" cy="10.98" r="1.95"/>
-    </symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M7.5 4.5 5.2 5.8c-.8.5-.8 1.7-.3 3.2 1.5 4.6 5.5 8.6 10.1 10.1 1.5.5 2.7.5 3.2-.3l1.3-2.3-4-1.8-1.3 1.3c-2.4-1.1-5.1-3.8-6.2-6.2l1.3-1.3-1.8-4Z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="4" y="6.5" width="16" height="11" rx="1.5"/><path d="m5 8 7 5 7-5"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.5"/><circle cx="17" cy="7" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 20s5-4.5 5-9a5 5 0 1 0-10 0c0 4.5 5 9 5 9Z"/><circle cx="12" cy="11" r="2"/></symbol>
     <symbol id="i-route" viewBox="0 0 24 24"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M7.5 16.5c5-1 3-7 8.5-9"/></symbol>
-    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
-    <symbol id="i-box" viewBox="0 0 24 24"><path d="m4 7 8-4 8 4v10l-8 4-8-4V7Z"/><path d="m4 7 8 4 8-4M12 11v10"/></symbol>
     <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4M7 11l3-3 3 2 4-4"/></symbol>
-    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c.8-4 3.4-6 8-6s7.2 2 8 6"/></symbol>
-    <symbol id="i-phone" viewBox="0 0 24 24">
-      <path d="M8.1 4.6c.3-.55.76-.74 1.3-.52l1.82.78c.5.22.76.67.68 1.18l-.34 1.92c-.07.38.03.7.3.98.5.55 1.02 1.05 1.55 1.5.52.44 1.04.82 1.6 1.14.27.16.56.19.86.09l1.78-.59c.5-.16.98.01 1.27.47l1.03 1.66c.28.46.23.94-.15 1.32l-.91.91c-.75.75-1.78 1.02-2.79.74-2.2-.61-4.3-1.93-6.28-3.93-2-2.02-3.32-4.13-3.92-6.34-.28-1-.02-2.03.72-2.78l.79-.83Z"/>
-    </symbol>
-    <symbol id="i-mail" viewBox="0 0 24 24">
-      <rect x="4.25" y="6.75" width="15.5" height="10.5" rx="1.65"/>
-      <path d="M5.2 8.1 12 13.2l6.8-5.1"/>
-    </symbol>
-    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 16V4M8 8l4-4 4 4M4 14v6h16v-6"/></symbol>
-    <symbol id="i-instagram" viewBox="0 0 24 24">
-      <rect x="4.2" y="4.2" width="15.6" height="15.6" rx="4.1"/>
-      <circle cx="12" cy="12" r="3.55"/>
-      <circle cx="17.05" cy="6.95" r=".9" fill="currentColor" stroke="none"/>
-    </symbol>
-    <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M8 10v7M8 7v.1M12 17v-4c0-2 3-2 3 0v4M12 10v7"/></symbol>
-    <symbol id="i-whatsapp" viewBox="0 0 24 24">
-      <path d="M12 2.75c-5.1 0-9.25 4.02-9.25 8.97 0 1.72.5 3.39 1.43 4.84L2.75 21.25l4.87-1.29a9.46 9.46 0 0 0 4.38 1.06c5.1 0 9.25-4.02 9.25-8.97s-4.15-8.97-9.25-8.97Z"/>
-      <path d="M9.55 7.8c.15-.34.39-.41.68-.41h.55c.17 0 .43.06.6.43l.82 1.96c.08.2.1.42-.05.63l-.64.84c-.11.14-.14.29-.05.46.31.59.79 1.14 1.39 1.65.61.52 1.22.91 1.84 1.19.18.08.34.06.48-.05l.82-.62c.22-.17.44-.15.64-.07l2 .82c.22.09.36.22.39.41.03.2.02.85-.24 1.34-.25.49-.97.92-1.38.95-.4.04-.9.08-1.64-.16-.45-.14-1.03-.39-1.78-.77-.88-.45-1.64-1-2.28-1.64-.62-.61-1.14-1.29-1.56-2.02-.42-.74-.69-1.38-.82-1.93-.13-.55-.12-.99-.11-1.29.02-.29.35-.92.5-1.26Z" fill="currentColor" stroke="none"/>
-    </symbol>
-    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.9-2.8 8-7 10-4.2-2-7-5.1-7-10V6l7-3Z"/><path d="m9.5 12 1.7 1.7 3.5-4"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="m4 7 8-4 8 4v10l-8 4-8-4V7Z"/><path d="m4 7 8 4 8-4M12 11v10"/></symbol>
   </svg>
 
-  <div class="scroll-progress"><span id="scrollProgress"></span></div>
-
-  <header class="site-header" id="header">
-    <div class="shell header-inner">
-      <a class="brand" href="#inicio"><img src="assets/logo-fr-optimized.webp" alt="Expresso FR"></a>
-      <nav class="nav" id="nav">
+  <header class="header" id="header">
+    <div class="shell header__inner">
+      <a class="brand" href="#inicio" aria-label="Expresso FR — início"><img src="/assets/logo-fr.webp" alt="Expresso FR" /></a>
+      <nav class="nav" id="nav" aria-label="Navegação principal">
         <a href="#inicio">Início</a>
         <a href="#cotacao">Cotação</a>
-        <a href="#servicos">Soluções</a>
+        <a href="#dedicada">Carga dedicada</a>
         <a href="#diferenciais">Diferenciais</a>
         <a href="#sobre">Sobre</a>
         <a href="#contato">Contato</a>
       </nav>
-      <div class="header-actions">
-        <a class="btn btn-primary btn-small" href="#cotacao">Solicitar cotação <svg class="icon"><use href="#i-arrow"/></svg></a>
-        <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav"><span></span><span></span></button>
+      <div class="header__actions">
+        <a class="btn btn--green btn--small" href="#cotacao">Solicitar cotação</a>
+        <button class="menu" id="menuBtn" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span></button>
       </div>
     </div>
   </header>
 
   <main>
     <section class="hero" id="inicio">
-      <div class="hero-slides" aria-hidden="true">
-        <div class="hero-slide is-active" data-kicker="15 anos de estrada" data-title-1="Movendo cargas." data-title-2="Com confiança." data-text="Transporte rodoviário com segurança e agilidade.">
-          <img src="assets/hero-placeholders/hero-placeholder-01.webp" alt="" width="1600" height="900" fetchpriority="high" decoding="async">
-        </div>
-        <div class="hero-slide" data-kicker="Operações críticas" data-title-1="Prazo sob controle." data-title-2="Operação acompanhada." data-text="Resposta rápida para cargas que não podem esperar.">
-          <img src="assets/hero-placeholders/hero-placeholder-02.webp" alt="" width="1600" height="900" fetchpriority="low" decoding="async">
-        </div>
+      <div class="hero__slides" aria-hidden="true">
+        <figure class="hero__slide is-active" data-kicker="15 anos de estrada" data-line1="Carga dedicada." data-line2="Com confiança." data-text="Operação exclusiva para cargas que exigem segurança, prazo e previsibilidade.">
+          <img src="/assets/img/real-07.webp" alt="" fetchpriority="high" decoding="async" />
+        </figure>
+        <figure class="hero__slide" data-kicker="Operações dedicadas" data-line1="Prazo sob controle." data-line2="Acompanhamento contínuo." data-text="Monitoramento e atendimento próximo durante todo o transporte.">
+          <img src="/assets/img/real-01.webp" alt="" loading="eager" decoding="async" />
+        </figure>
+        <figure class="hero__slide" data-kicker="Estrutura preparada" data-line1="Carga industrial." data-line2="Operação sob medida." data-text="Veículo, rota e prazo definidos para cada necessidade.">
+          <img src="/assets/img/real-06.webp" alt="" loading="eager" decoding="async" />
+        </figure>
       </div>
-      <div class="hero-overlay"></div>
-      <div class="shell hero-layout">
-        <div class="hero-copy reveal">
-          <div class="eyebrow hero-kicker" id="heroKicker"><span></span>15 anos de estrada</div>
-          <h1>
-            <span class="hero-line" id="heroTitle1">Movendo cargas.</span>
-            <span class="hero-line hero-line-soft" id="heroTitle2">Com confiança.</span>
-          </h1>
-          <p id="heroText">Transporte rodoviário com segurança e agilidade.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#cotacao">Solicitar cotação <svg class="icon"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn-ghost" href="#sobre">Conheça a Expresso FR</a>
+      <div class="hero__shade"></div>
+      <div class="shell hero__content">
+        <div class="hero__copy reveal">
+          <div class="kicker" id="heroKicker">15 anos de estrada</div>
+          <h1><span id="heroLine1">Carga dedicada.</span><span id="heroLine2">Com confiança.</span></h1>
+          <p id="heroText">Operação exclusiva para cargas que exigem segurança, prazo e previsibilidade.</p>
+          <div class="hero__actions">
+            <a class="btn btn--green" href="#cotacao">Solicitar cotação <svg><use href="#i-arrow"/></svg></a>
+            <a class="btn btn--ghost" href="#sobre">Conheça a Expresso FR</a>
           </div>
         </div>
       </div>
-      <div class="shell hero-bottom-bar">
-        <div class="hero-controls" id="heroControls">
-          <button class="hero-dot is-active" data-slide="0">15 anos</button>
-          <button class="hero-dot" data-slide="1">Operações críticas</button>
+      <div class="shell hero__nav">
+        <div class="hero__dots" id="heroDots">
+          <button class="is-active" data-slide="0">15 anos</button>
+          <button data-slide="1">Operações</button>
+          <button data-slide="2">Estrutura</button>
         </div>
-        <div class="hero-progress"><span id="heroProgress"></span></div>
+        <div class="hero__progress"><span id="heroProgress"></span></div>
       </div>
     </section>
 
-    <section class="quote-section" id="cotacao">
-      <div class="shell quote-wrap reveal">
-        <div class="quote-copy">
-          <span class="eyebrow green">Cotação de frete</span>
-          <h2>Envie os dados da carga e agilize sua cotação.</h2>
-          <p>Informe o responsável, a coleta, o destino e as características da carga. O site organiza tudo e envia diretamente para o WhatsApp comercial da Expresso FR.</p>
-          <div class="quote-mini-points">
-            <div><span class="social-icon social-whatsapp" aria-hidden="true"></span><span>Envio para (31) 97553-5768</span></div>
-            <div><svg><use href="#i-route"/></svg><span>Coleta e destino separados</span></div>
-            <div><svg><use href="#i-box"/></svg><span>Volumes, peso e medidas estruturados</span></div>
-          </div>
+    <section class="ticker" aria-label="Destaques da Expresso FR">
+      <div class="ticker__track">
+        <div class="ticker__group">
+          <span>CARGA DEDICADA</span><i>•</i><span>SEGURANÇA</span><i>•</i><span>PONTUALIDADE</span><i>•</i><span>MONITORAMENTO 24H</span><i>•</i><span>PLANEJAMENTO</span><i>•</i><span>COBERTURA NACIONAL</span><i>•</i>
         </div>
+        <div class="ticker__group" aria-hidden="true">
+          <span>CARGA DEDICADA</span><i>•</i><span>SEGURANÇA</span><i>•</i><span>PONTUALIDADE</span><i>•</i><span>MONITORAMENTO 24H</span><i>•</i><span>PLANEJAMENTO</span><i>•</i><span>COBERTURA NACIONAL</span><i>•</i>
+        </div>
+      </div>
+    </section>
 
-        <form id="quoteForm" class="quote-form premium-form" novalidate>
-          <div class="form-steps-nav" aria-label="Etapas da cotação">
-            <button type="button" class="step-tab is-active" data-step="0"><span>1</span> Responsável</button>
-            <button type="button" class="step-tab" data-step="1"><span>2</span> Coleta</button>
-            <button type="button" class="step-tab" data-step="2"><span>3</span> Destino</button>
-            <button type="button" class="step-tab" data-step="3"><span>4</span> Carga</button>
+    <section class="quote" id="cotacao">
+      <div class="shell quote__grid">
+        <aside class="quote__intro reveal">
+          <span class="eyebrow">Cotação de frete</span>
+          <h2>Envie os dados da carga e agilize sua cotação.</h2>
+          <p>O formulário organiza as informações da operação e abre o WhatsApp comercial com a solicitação pronta.</p>
+          <div class="quote__points">
+            <div><img src="assets/icons/whatsapp-real-clean-dark.png" alt="" class="wa-real wa-real--quote"><span>Envio direto para (31) 97553-5768</span></div>
+            <div><svg><use href="#i-route"/></svg><span>Coleta e destino separados</span></div>
+            <div><svg><use href="#i-box"/></svg><span>Volumes, peso, medidas e cubagem</span></div>
+          </div>
+        </aside>
+
+        <form class="form reveal" id="quoteForm" novalidate>
+          <div class="form__tabs" role="tablist" aria-label="Etapas da cotação">
+            <button class="is-active" type="button" data-step="0"><span>1</span>Responsável</button>
+            <button type="button" data-step="1"><span>2</span>Coleta</button>
+            <button type="button" data-step="2"><span>3</span>Destino</button>
+            <button type="button" data-step="3"><span>4</span>Carga</button>
           </div>
 
-          <div class="form-step is-active" data-step-panel="0">
-            <div class="form-step-head"><small>Etapa 1 de 4</small><h3>Responsável pela solicitação</h3></div>
-            <div class="field-grid two">
-              <label>Nome completo<input id="qResponsavel" required autocomplete="name"></label>
-              <label>Telefone / WhatsApp<input id="qTelefone" required autocomplete="tel" inputmode="tel" maxlength="15"></label>
-              <label class="wide-field">CPF / CNPJ do cliente<input id="qClienteDocumento" class="doc-field" required inputmode="text"></label>
+          <div class="form__step is-active" data-panel="0">
+            <div class="form__head"><small>Etapa 1 de 4</small><h3>Responsável pela solicitação</h3></div>
+            <div class="grid2">
+              <label>Nome completo<input id="qResponsavel" required autocomplete="name" /></label>
+              <label>Telefone / WhatsApp<input id="qTelefone" required inputmode="tel" maxlength="15" autocomplete="tel" /></label>
+              <label class="span2">CPF / CNPJ do cliente<input id="qClienteDocumento" required inputmode="numeric" /></label>
             </div>
-            <div class="step-actions">
-              <span class="step-hint">Usaremos estes dados apenas para retorno da cotação.</span>
-              <button type="button" class="btn btn-primary next-step" data-next="1">Continuar <svg class="icon"><use href="#i-arrow"/></svg></button>
-            </div>
+            <div class="form__actions"><span>Dados usados apenas para retorno da cotação.</span><button type="button" class="btn btn--dark next" data-next="1">Continuar <svg><use href="#i-arrow"/></svg></button></div>
           </div>
 
-          <div class="form-step" data-step-panel="1">
-            <div class="form-step-head"><small>Etapa 2 de 4</small><h3>Dados da coleta</h3></div>
-            <div class="field-grid two">
-              <label>Nome da empresa da coleta<input id="qColetaEmpresa" required></label>
-              <label>Cidade da coleta<input id="qColetaCidade" required></label>
-              <label>CPF / CNPJ do remetente<input id="qColetaDocumento" class="doc-field" required inputmode="text"></label>
-              <label>CEP da coleta<input id="qColetaCep" class="cep-field" required inputmode="numeric" maxlength="9"></label>
-              <label class="wide-field">Endereço da empresa da coleta<input id="qColetaEndereco" required autocomplete="street-address"></label>
+          <div class="form__step" data-panel="1">
+            <div class="form__head"><small>Etapa 2 de 4</small><h3>Dados da coleta</h3></div>
+            <div class="grid2">
+              <label>Empresa da coleta<input id="qColetaEmpresa" required /></label>
+              <label>CPF / CNPJ do remetente<input id="qColetaDocumento" required inputmode="numeric" /></label>
+              <label>CEP da coleta<input id="qColetaCep" required inputmode="numeric" maxlength="9" /></label>
+              <label>Cidade da coleta<input id="qColetaCidade" required /></label>
+              <label class="span2">Endereço completo da coleta<input id="qColetaEndereco" required autocomplete="street-address" /></label>
             </div>
-            <div class="step-actions between">
-              <button type="button" class="btn btn-outline-dark prev-step" data-prev="0">Voltar</button>
-              <button type="button" class="btn btn-primary next-step" data-next="2">Continuar <svg class="icon"><use href="#i-arrow"/></svg></button>
-            </div>
+            <div class="form__actions form__actions--between"><button type="button" class="btn btn--outline prev" data-prev="0">Voltar</button><button type="button" class="btn btn--dark next" data-next="2">Continuar <svg><use href="#i-arrow"/></svg></button></div>
           </div>
 
-          <div class="form-step" data-step-panel="2">
-            <div class="form-step-head"><small>Etapa 3 de 4</small><h3>Dados do destino</h3></div>
-            <div class="field-grid two">
-              <label>Nome da empresa destino<input id="qDestinoEmpresa" required></label>
-              <label>Cidade destino<input id="qDestinoCidade" required></label>
-              <label>CPF / CNPJ do destinatário<input id="qDestinoDocumento" class="doc-field" required inputmode="text"></label>
-              <label>CEP do destino<input id="qDestinoCep" class="cep-field" required inputmode="numeric" maxlength="9"></label>
-              <label class="wide-field">Endereço da empresa destino<input id="qDestinoEndereco" required autocomplete="street-address"></label>
+          <div class="form__step" data-panel="2">
+            <div class="form__head"><small>Etapa 3 de 4</small><h3>Dados do destino</h3></div>
+            <div class="grid2">
+              <label>Empresa destino<input id="qDestinoEmpresa" required /></label>
+              <label>CPF / CNPJ do destinatário<input id="qDestinoDocumento" required inputmode="numeric" /></label>
+              <label>CEP do destino<input id="qDestinoCep" required inputmode="numeric" maxlength="9" /></label>
+              <label>Cidade destino<input id="qDestinoCidade" required /></label>
+              <label class="span2">Endereço completo do destino<input id="qDestinoEndereco" required autocomplete="street-address" /></label>
             </div>
-            <div class="step-actions between">
-              <button type="button" class="btn btn-outline-dark prev-step" data-prev="1">Voltar</button>
-              <button type="button" class="btn btn-primary next-step" data-next="3">Continuar <svg class="icon"><use href="#i-arrow"/></svg></button>
-            </div>
+            <div class="form__actions form__actions--between"><button type="button" class="btn btn--outline prev" data-prev="1">Voltar</button><button type="button" class="btn btn--dark next" data-next="3">Continuar <svg><use href="#i-arrow"/></svg></button></div>
           </div>
 
-          <div class="form-step" data-step-panel="3">
-            <div class="form-step-head"><small>Etapa 4 de 4</small><h3>Informações da carga</h3></div>
-            <div class="field-grid cargo-grid">
-              <label>Volumes<input id="qVolumes" required inputmode="numeric"></label>
-              <label>Peso total<input id="qPeso" required inputmode="decimal"></label>
-              <label>Tipo de carga<select id="qTipo"><option>Carga dedicada</option><option>Carga expressa</option><option>Carga fracionada</option><option>Consolidação de cargas</option><option>Just-in-Time</option><option>Operação especial</option></select></label>
+          <div class="form__step" data-panel="3">
+            <div class="form__head"><small>Etapa 4 de 4</small><h3>Informações da carga</h3></div>
+            <div class="grid2 cargo-grid">
+              <label>Volumes<input id="qVolumes" required inputmode="numeric" /></label>
+              <label>Peso total<input id="qPeso" required inputmode="decimal" /></label>
+              <label>Modalidade<select id="qTipo"><option>Carga dedicada</option></select></label>
               <label>Urgência<select id="qUrgencia"><option>Normal</option><option>Urgente</option><option>Data programada</option></select></label>
             </div>
 
-            <div class="measurements-block">
-              <div class="measurements-head">
-                <div><b>Medidas dos volumes</b><small>Comprimento × largura × altura</small></div>
-                <select id="qMedidaUnidade" aria-label="Unidade das medidas"><option value="m">metros</option><option value="cm">centímetros</option></select>
-              </div>
-              <div id="measureRows" class="measure-rows">
+            <div class="measurements">
+              <div class="measurements__head"><div><strong>Medidas dos volumes</strong><small>Comprimento × largura × altura</small></div><select id="qUnidade"><option value="m">metros</option><option value="cm">centímetros</option></select></div>
+              <div id="measureRows" class="measurements__rows">
                 <div class="measure-row">
-                  <label>Qtd.<input class="measure-qty" inputmode="numeric" type="number" min="1" value="1"></label>
-                  <label>Comprimento<input class="measure-length" inputmode="decimal"></label>
-                  <label>Largura<input class="measure-width" inputmode="decimal"></label>
-                  <label>Altura<input class="measure-height" inputmode="decimal"></label>
-                  <button type="button" class="remove-measure" aria-label="Remover medida">×</button>
+                  <label>Qtd.<input class="m-qty" type="number" min="1" value="1" /></label>
+                  <label>Comprimento<input class="m-l" inputmode="decimal" /></label>
+                  <label>Largura<input class="m-w" inputmode="decimal" /></label>
+                  <label>Altura<input class="m-h" inputmode="decimal" /></label>
+                  <button type="button" class="measure-remove" aria-label="Remover medida">×</button>
                 </div>
               </div>
-              <button type="button" id="addMeasure" class="add-measure">+ Adicionar outra medida</button>
-              <div class="cubage-summary" aria-live="polite">
-                <span>Cubagem estimada</span>
-                <strong id="cubageValue">0,000 m³</strong>
-                <small>Calculada automaticamente a partir das medidas informadas.</small>
-              </div>
+              <button type="button" class="measure-add" id="addMeasure">+ Adicionar outra medida</button>
+              <div class="cubage"><span>Cubagem estimada</span><strong id="cubageValue">0,000 m³</strong><small>Calculada automaticamente pelas medidas informadas.</small></div>
             </div>
 
-            <div class="field-grid two">
-              <label>Anexo <small class="field-help">opcional</small><div class="upload-inline"><input type="file" id="qArquivo" accept="image/*,.pdf"><svg><use href="#i-upload"/></svg><span id="fileLabel">Selecionar imagem ou PDF</span></div><small class="attachment-note">Após abrir o WhatsApp, anexe o documento manualmente.</small></label>
+            <div class="grid2">
               <label>Observações<textarea id="qObs" rows="4"></textarea></label>
+              <label>Anexo <small>opcional</small><input id="qArquivo" type="file" accept="image/*,.pdf" /><span class="file-note">O arquivo deverá ser anexado manualmente no WhatsApp.</span></label>
             </div>
-
-            <div class="step-actions between">
-              <button type="button" class="btn btn-outline-dark prev-step" data-prev="2">Voltar</button>
-              <button type="button" class="btn btn-whatsapp" id="reviewQuote"><span class="social-icon social-whatsapp" aria-hidden="true"></span> Revisar e enviar <svg class="icon"><use href="#i-arrow"/></svg></button>
-            </div>
-            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            <div class="form__actions form__actions--between"><button type="button" class="btn btn--outline prev" data-prev="2">Voltar</button><button type="button" class="btn btn--green" id="reviewBtn"><img src="assets/icons/whatsapp-real-clean-dark.png" alt="" class="wa-real">Revisar e enviar</button></div>
           </div>
         </form>
       </div>
-
-      <dialog class="quote-review" id="quoteReview">
-        <div class="review-card">
-          <div class="review-head"><div><small>Confira antes de enviar</small><h3>Resumo da cotação</h3></div><button type="button" class="review-close" id="reviewClose" aria-label="Fechar">×</button></div>
-          <div id="reviewContent" class="review-content"></div>
-          <div class="review-actions">
-            <button type="button" class="btn btn-outline-dark" id="reviewEdit">Editar</button>
-            <button type="button" class="btn btn-whatsapp" id="reviewSend"><span class="social-icon social-whatsapp" aria-hidden="true"></span> Enviar pelo WhatsApp</button>
-          </div>
-        </div>
-      </dialog>
     </section>
 
-    <section class="motion-strip" aria-label="Destaques da Expresso FR">
-      <div class="motion-strip-track">
-        <div class="motion-strip-group">
-          <span>SEGURANÇA</span><i>•</i>
-          <span>PONTUALIDADE</span><i>•</i>
-          <span>MONITORAMENTO 24H</span><i>•</i>
-          <span>LOGÍSTICA</span><i>•</i>
-          <span>CONFIANÇA</span><i>•</i>
-          <span>AGILIDADE</span><i>•</i>
-          <span>COBERTURA NACIONAL</span><i>•</i>
-          <span>JUST-IN-TIME</span><i>•</i>
-        </div>
-        <div class="motion-strip-group" aria-hidden="true">
-          <span>SEGURANÇA</span><i>•</i>
-          <span>PONTUALIDADE</span><i>•</i>
-          <span>MONITORAMENTO 24H</span><i>•</i>
-          <span>LOGÍSTICA</span><i>•</i>
-          <span>CONFIANÇA</span><i>•</i>
-          <span>AGILIDADE</span><i>•</i>
-          <span>COBERTURA NACIONAL</span><i>•</i>
-          <span>JUST-IN-TIME</span><i>•</i>
-        </div>
-      </div>
-    </section>
-
-    <section class="services dark" id="servicos">
+    <section class="dedicated" id="dedicada">
       <div class="shell">
-        <div class="section-head reveal">
-          <div>
-            <span class="eyebrow">Soluções logísticas</span>
-            <h2>Soluções desenhadas para a realidade de cada operação.</h2>
-          </div>
-          <p>Do transporte dedicado às operações especiais, cada serviço é planejado para equilibrar prazo, segurança e eficiência.</p>
-        </div>
-
-        <div class="service-editorial">
-          <article class="service-card service-card-large reveal">
-            <div class="service-media has-watermark"><img src="assets/real/service-real-01.webp" alt="Carga dedicada em rodovia" width="1200" height="760" loading="lazy" decoding="async"></div>
-            <div class="service-content">
-              <span class="service-tag">Carga dedicada</span>
-              <h3>Controle, previsibilidade e operação sob medida.</h3>
-              <p>Veículo exclusivo para sua carga com foco em segurança, organização da rota e acompanhamento durante o transporte.</p>
-              <a href="#cotacao">Solicitar cotação <svg class="icon"><use href="#i-arrow"/></svg></a>
-            </div>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-media has-watermark"><img src="assets/real/service-real-02.webp" alt="Operação expressa" width="1200" height="760" loading="lazy" decoding="async"></div>
-            <div class="service-content">
-              <span class="service-tag">Carga expressa</span>
-              <h3>Resposta rápida para prazos críticos.</h3>
-              <p>Atendimento pensado para operações urgentes e cargas que não podem esperar.</p>
-            </div>
-          </article>
-
-          <article class="service-card reveal">
-            <div class="service-media service-graphic" aria-hidden="true"><div class="service-graphic-inner"><svg class="service-graphic-icon"><use href="#i-box"/></svg><span>FRACIONADA</span><small>Volumes diferentes. Rota otimizada.</small></div></div>
-            <div class="service-content">
-              <span class="service-tag">Carga fracionada</span>
-              <h3>Eficiência para volumes diferentes.</h3>
-              <p>Aproveitamento inteligente de rotas com foco em agilidade e melhor custo operacional.</p>
-            </div>
-          </article>
-
-          <article class="service-card service-card-wide reveal">
-            <div class="service-media service-graphic route-graphic" aria-hidden="true"><div class="service-graphic-inner"><svg class="service-graphic-icon"><use href="#i-route"/></svg><span>OPERAÇÕES ESPECIAIS</span><small>Planejamento, janela e precisão.</small></div></div>
-            <div class="service-content">
-              <span class="service-tag">Consolidação, Just-in-Time e operações especiais</span>
-              <h3>Capacidade para diferentes perfis de demanda.</h3>
-              <p>Planejamento logístico para rotas integradas, janelas de entrega e operações que exigem maior precisão.</p>
-              <ul class="service-list">
-                <li>Consolidação de cargas</li>
-                <li>Just-in-Time</li>
-                <li>Operações especiais</li>
-                <li>Monitoramento 24h</li>
-              </ul>
-            </div>
-          </article>
+        <div class="section-head reveal"><div><span class="eyebrow">Transporte dedicado</span><h2>Uma operação exclusiva para a sua carga.</h2></div><p>Veículo, rota, prazo e acompanhamento definidos conforme a necessidade de cada operação.</p></div>
+        <div class="dedicated__grid">
+          <article class="feature feature--large reveal"><figure><img src="/assets/img/real-03.webp" alt="Carreta carregada em operação dedicada" loading="lazy" decoding="async" /></figure><div><span>Carga dedicada</span><h3>Veículo exclusivo. Operação sob medida.</h3><p>Sua carga segue em uma operação exclusiva, com planejamento de rota, prazo definido e acompanhamento durante todo o transporte.</p></div></article>
+          <article class="feature reveal"><figure><img src="/assets/img/real-04.webp" alt="Carga industrial preparada para transporte dedicado" loading="lazy" decoding="async" /></figure><div><span>Planejamento dedicado</span><h3>Rota e prazo definidos para cada operação.</h3></div></article>
+          <article class="feature reveal"><figure><img src="/assets/img/real-02.webp" alt="Carga protegida em carreta dedicada" loading="lazy" decoding="async" /></figure><div><span>Estrutura</span><h3>Capacidade para diferentes perfis de carga.</h3></div></article>
         </div>
       </div>
     </section>
 
-    <section class="process light" id="processo">
+    <section class="process" id="diferenciais">
       <div class="shell">
-        <div class="section-head compact reveal">
-          <div><span class="eyebrow green">Como funciona</span><h2>Da cotação à entrega, com acompanhamento em cada etapa.</h2></div>
-          <p>Um fluxo simples para transformar as informações da carga em uma operação organizada, segura e rastreável.</p>
-        </div>
-        <div class="process-flow reveal">
-          <article><svg><use href="#i-box"/></svg><h3>Cotação</h3><p>Você envia os dados da carga, coleta e destino.</p></article>
-          <article><svg><use href="#i-user"/></svg><h3>Análise</h3><p>A equipe comercial avalia a necessidade e retorna com a proposta.</p></article>
-          <article><svg><use href="#i-truck"/></svg><h3>Coleta</h3><p>A operação é programada conforme rota, janela e disponibilidade.</p></article>
-          <article><svg><use href="#i-monitor"/></svg><h3>Monitoramento</h3><p>Acompanhamento durante o transporte para ampliar a previsibilidade.</p></article>
-          <article><svg><use href="#i-pin"/></svg><h3>Entrega</h3><p>Conclusão da operação no destino combinado.</p></article>
+        <div class="section-head section-head--light reveal"><div><span class="eyebrow">Como funciona</span><h2>Do pedido à entrega, sem ruído.</h2></div><p>Um fluxo objetivo para dar previsibilidade à operação.</p></div>
+        <div class="process__line">
+          <article><svg><use href="#i-box"/></svg><h3>Cotação</h3><p>Dados da carga, origem e destino.</p></article>
+          <article><svg><use href="#i-route"/></svg><h3>Análise</h3><p>Rota, veículo e prazo.</p></article>
+          <article><svg><use href="#i-truck"/></svg><h3>Coleta</h3><p>Operação programada.</p></article>
+          <article><svg><use href="#i-monitor"/></svg><h3>Monitoramento</h3><p>Acompanhamento contínuo.</p></article>
+          <article><svg><use href="#i-pin"/></svg><h3>Entrega</h3><p>Conclusão no destino combinado.</p></article>
         </div>
       </div>
     </section>
 
-    <section class="story light" id="sobre">
-      <div class="shell story-grid">
-        <div class="story-copy reveal">
-          <span class="eyebrow green">15 anos de história</span>
-          <h2>Uma trajetória que conecta estrada, confiança e resultado.</h2>
-          <p>Desde 2011, a Expresso FR vem evoluindo sua estrutura para atender empresas com mais segurança, comunicação e consistência operacional.</p>
-          <div class="timeline">
-            <article><small>2011</small><h3>Início da trajetória</h3><p>Nasce a operação com foco em transporte rodoviário confiável.</p></article>
-            <article><small>Evolução</small><h3>Fortalecimento da estrutura</h3><p>Expansão de atendimento, operação mais preparada e relacionamento de longo prazo.</p></article>
-            <article><small>2026</small><h3>15 anos de mercado</h3><p>Uma marca consolidada para atender operações em todo o Brasil.</p></article>
-          </div>
-        </div>
-
-        <div class="story-visual story-single story-graphic reveal" aria-label="15 anos de história da Expresso FR">
-          <div class="story-number">15</div>
-          <div class="story-graphic-copy">
-            <small>2011 → 2026</small>
-            <strong>15 anos construindo confiança nas estradas.</strong>
-            <span>Experiência, compromisso e evolução contínua.</span>
-          </div>
-        </div>
+    <section class="about" id="sobre">
+      <div class="shell about__grid">
+        <div class="about__copy reveal"><span class="eyebrow">Desde maio de 2011</span><div class="about__number">15</div><h2>anos de estrada.</h2><p>Uma trajetória construída com experiência, confiança, operação dedicada e atendimento próximo.</p><div class="about__facts"><div><strong>24h</strong><span>monitoramento</span></div><div><strong>Brasil</strong><span>atuação nacional</span></div></div></div>
+        <div class="mosaic reveal"><figure class="mosaic__a"><img src="/assets/img/real-05.webp" alt="Caminhão em operação da Expresso FR" loading="lazy" /></figure><figure><img src="/assets/img/real-06.webp" alt="Caminhão tanque em operação" loading="lazy" /></figure><figure><img src="/assets/img/real-01.webp" alt="Carga industrial em carreta" loading="lazy" /></figure></div>
       </div>
     </section>
 
-    <section class="differentials light" id="diferenciais">
-      <div class="shell differentials-grid">
-        <div class="differentials-copy reveal">
-          <span class="eyebrow green">Por que escolher a Expresso FR?</span>
-          <h2>Mais que transporte. Um parceiro estratégico para sua operação.</h2>
-          <p>Estrutura, acompanhamento e atendimento próximo para manter sua carga em movimento com previsibilidade.</p>
-        </div>
-        <div class="benefits reveal" id="benefitsBlock">
-          <div class="benefit-line"><span></span></div>
-          <article class="benefit-item">
-            <div class="benefit-icon"><svg><use href="#i-shield"/></svg></div>
-            <div class="benefit-text"><h3>Segurança em primeiro lugar</h3><p>Processos orientados à proteção da carga e da operação.</p></div>
-          </article>
-          <article class="benefit-item">
-            <div class="benefit-icon"><svg><use href="#i-monitor"/></svg></div>
-            <div class="benefit-text"><h3>Monitoramento 24h</h3><p>Acompanhamento contínuo durante o transporte.</p></div>
-          </article>
-          <article class="benefit-item">
-            <div class="benefit-icon"><svg><use href="#i-truck"/></svg></div>
-            <div class="benefit-text"><h3>Frota e parceiros preparados</h3><p>Capacidade para diferentes perfis de demanda.</p></div>
-          </article>
-          <article class="benefit-item">
-            <div class="benefit-icon"><svg><use href="#i-user"/></svg></div>
-            <div class="benefit-text"><h3>Atendimento consultivo</h3><p>Contato próximo e solução desenhada para cada necessidade.</p></div>
-          </article>
-        </div>
-      </div>
+    <section class="partners" aria-label="Empresas parceiras">
+      <div class="shell"><span class="partners__label">Empresas parceiras</span></div>
+      <div class="partners__marquee"><div class="partners__track"><div>STELLANTIS</div><div>CIE FORJAS</div><div>OMR</div><div>PILKINGTON</div><div>PLASCAR</div><div>INBRASP</div><div>RIMA</div><div>VIBRA</div><div>STELLANTIS</div><div>CIE FORJAS</div><div>OMR</div><div>PILKINGTON</div><div>PLASCAR</div><div>INBRASP</div><div>RIMA</div><div>VIBRA</div></div></div>
     </section>
 
-    <section class="coverage dark" id="frota">
-      <div class="shell coverage-grid">
-        <div class="coverage-copy reveal">
-          <span class="eyebrow">Cobertura e estrutura</span>
-          <h2>Conectando Minas Gerais aos principais polos logísticos.</h2>
-          <p>Atuação nacional com rotas estratégicas e suporte para operações que exigem agilidade, rastreabilidade e planejamento.</p>
-          <div class="route-list">
-            <div><strong>MG → PE</strong><span>Sudeste ao Nordeste</span></div>
-            <div><strong>MG → SP</strong><span>Integração entre grandes polos</span></div>
-            <div><strong>MG → PR</strong><span>Conexão estratégica com o Sul</span></div>
-          </div>
-        </div>
-        <div class="map-card reveal">
-          <div class="brazil-map" aria-label="Mapa ilustrativo do Brasil com rotas da Expresso FR">
-            <svg viewBox="0 0 620 620" role="img" aria-labelledby="mapTitle mapDesc">
-              <title id="mapTitle">Cobertura da Expresso FR no Brasil</title>
-              <desc id="mapDesc">Mapa estilizado do Brasil destacando Minas Gerais, São Paulo, Paraná e Pernambuco e rotas partindo de Minas Gerais.</desc>
-              <defs>
-                <linearGradient id="mapFill" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#10241a"/><stop offset="1" stop-color="#173828"/></linearGradient>
-                <filter id="glow"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-              </defs>
-              <path class="brazil-shape" d="M240 48 305 72 338 112 395 120 435 160 485 184 512 235 494 282 520 320 486 360 470 412 425 440 400 500 350 542 303 515 270 470 222 452 200 400 158 372 126 320 142 276 110 236 145 194 170 146 210 118Z"/>
-              <g class="route-paths" fill="none" stroke-linecap="round">
-                <path class="route-svg route-pe" d="M286 344 C330 292 392 222 438 202"/>
-                <path class="route-svg route-sp" d="M286 344 C300 375 320 395 344 408"/>
-                <path class="route-svg route-pr" d="M286 344 C275 405 268 437 276 474"/>
-              </g>
-              <g class="map-markers">
-                <g transform="translate(286 344)"><circle r="10"/><text x="16" y="4">MG</text></g>
-                <g transform="translate(344 408)"><circle r="8"/><text x="14" y="4">SP</text></g>
-                <g transform="translate(276 474)"><circle r="8"/><text x="14" y="4">PR</text></g>
-                <g transform="translate(438 202)"><circle r="8"/><text x="14" y="4">PE</text></g>
-              </g>
-            </svg>
-          </div>
-          <div class="map-info">
-            <div><strong>Base operacional</strong><span>Av. Secretário Divino Padrão, 680 · Sete Lagoas / MG</span></div>
-            <div><strong>Atuação</strong><span>Atendimento em todo o território nacional.</span></div>
-            <div><strong>Monitoramento</strong><span>Acompanhamento 24 horas durante a operação.</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="trust-band light">
-      <div class="shell trust-wrap reveal">
-        <div class="trust-facts">
-          <div><strong>15 anos</strong><span>de experiência</span></div>
-          <div><strong>24h</strong><span>de monitoramento</span></div>
-          <div><strong>Brasil</strong><span>cobertura nacional</span></div>
-        </div>
-        <span class="eyebrow green">Empresas parceiras</span>
-        <div class="logo-marquee">
-          <div class="logo-track">
-            <span>STELLANTIS</span><span>CIE FORJAS</span><span>OMR</span><span>PILKINGTON</span><span>PLASCAR</span><span>INBRASP</span><span>RIMA</span><span>VIBRA</span>
-            <span>STELLANTIS</span><span>CIE FORJAS</span><span>OMR</span><span>PILKINGTON</span><span>PLASCAR</span><span>INBRASP</span><span>RIMA</span><span>VIBRA</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact dark" id="contato">
-      <div class="shell contact-grid">
-        <div class="contact-copy reveal">
-          <span class="eyebrow">Fale com nosso time</span>
-          <h2>Pronto para movimentar a próxima carga?</h2>
-          <p>Fale com nossa equipe comercial pelo WhatsApp, telefone ou e-mail. Para uma resposta mais precisa, você também pode enviar os dados completos pelo formulário de cotação.</p>
-          <div class="contact-actions">
-            <a class="btn btn-primary" href="#cotacao">Voltar para a cotação <svg class="icon"><use href="#i-arrow"/></svg></a>
-            <a class="btn btn-whatsapp" href="https://wa.me/5531975535768" target="_blank" rel="noreferrer"><span class="social-icon social-whatsapp" aria-hidden="true"></span> Falar no WhatsApp</a>
-          </div>
-        </div>
-        <div class="contact-panel reveal">
-          <a class="contact-item" href="tel:+5531975535768"><svg><use href="#i-phone"/></svg><div><small>Telefone</small><strong>(31) 97553-5768</strong></div></a>
-          <a class="contact-item" href="mailto:contato@expressofr.com.br"><svg><use href="#i-mail"/></svg><div><small>E-mail</small><strong>contato@expressofr.com.br</strong></div></a>
-          <a class="contact-item" href="https://instagram.com/expressofr.transportes" target="_blank" rel="noreferrer"><svg class="contact-icon" aria-hidden="true"><use href="#i-instagram"/></svg><div><small>Instagram</small><strong>@expressofr.transportes</strong></div></a>
-          <div class="contact-item"><svg><use href="#i-pin"/></svg><div><small>Base</small><strong>Av. Secretário Divino Padrão, 680 · Sete Lagoas / MG</strong></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="faq light">
-      <div class="shell faq-grid">
-        <div class="reveal">
-          <span class="eyebrow green">Dúvidas frequentes</span>
-          <h2>O essencial antes da cotação.</h2>
-        </div>
-        <div class="faq-list reveal">
-          <article>
-            <button>Quais regiões a Expresso FR atende?<span>+</span></button>
-            <p>Atendimento em todo o território nacional, conforme a disponibilidade e o perfil da operação.</p>
-          </article>
-          <article>
-            <button>Quais tipos de carga vocês transportam?<span>+</span></button>
-            <p>Cargas dedicadas, expressas, fracionadas, consolidadas, Just-in-Time e operações especiais.</p>
-          </article>
-          <article>
-            <button>O formulário envia direto para o WhatsApp?<span>+</span></button>
-            <p>Sim. O site organiza as informações e abre a conversa com os dados já preenchidos.</p>
-          </article>
-          <article>
-            <button>Vocês trabalham com monitoramento?<span>+</span></button>
-            <p>Sim. O monitoramento ajuda a ampliar a visibilidade da operação durante o transporte.</p>
-          </article>
+    <section class="contact" id="contato">
+      <div class="contact__bg"><img src="/assets/img/real-07.webp" alt="" loading="lazy" /></div>
+      <div class="shell contact__grid">
+        <div class="contact__copy reveal"><span class="eyebrow">Contato</span><h2>Vamos falar sobre a sua operação?</h2><p>Envie os dados da carga pela cotação ou fale diretamente com o nosso time.</p><div class="contact__actions"><a class="btn btn--green" href="https://wa.me/5531975535768" target="_blank" rel="noreferrer"><img src="assets/icons/whatsapp-real-clean-dark.png" alt="" class="wa-real">Falar no WhatsApp</a><a class="btn btn--ghost" href="mailto:contato@expressofr.com.br">Enviar e-mail</a></div></div>
+        <div class="contact__panel reveal">
+          <a href="tel:+5531975535768"><svg><use href="#i-phone"/></svg><div><small>Telefone</small><strong>(31) 97553-5768</strong></div></a>
+          <a href="mailto:contato@expressofr.com.br"><svg><use href="#i-mail"/></svg><div><small>E-mail</small><strong>contato@expressofr.com.br</strong></div></a>
+          <a href="https://instagram.com/expressofr.transportes" target="_blank" rel="noreferrer"><svg><use href="#i-instagram"/></svg><div><small>Instagram</small><strong>@expressofr.transportes</strong></div></a>
+          <div><svg><use href="#i-pin"/></svg><div><small>Base</small><strong>Av. Secretário Divino Padrão, 680 · Sete Lagoas / MG</strong></div></div>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="shell footer-top">
-      <div class="footer-brand">
-        <img src="assets/logo-fr-optimized.webp" alt="Expresso FR" class="footer-logo">
-        <p>Transporte rodoviário com 15 anos de estrada, operação mais preparada e atendimento consultivo para quem precisa de segurança, agilidade e confiança.</p>
-      </div>
-      <div class="footer-columns">
-        <div>
-          <h4>Institucional</h4>
-          <a href="#inicio">Início</a>
-          <a href="#sobre">Sobre</a>
-          <a href="#diferenciais">Diferenciais</a>
-        </div>
-        <div>
-          <h4>Soluções</h4>
-          <a href="#servicos">Carga dedicada</a>
-          <a href="#servicos">Carga expressa</a>
-          <a href="#servicos">Carga fracionada</a>
-        </div>
-        <div>
-          <h4>Contato</h4>
-          <a href="tel:+5531975535768"><svg><use href="#i-phone"/></svg> (31) 97553-5768</a>
-          <a href="mailto:contato@expressofr.com.br"><svg><use href="#i-mail"/></svg> contato@expressofr.com.br</a>
-          <a href="https://wa.me/5531975535768" target="_blank" rel="noreferrer"><span class="social-icon social-whatsapp" aria-hidden="true"></span> WhatsApp</a>
-          <a href="https://instagram.com/expressofr.transportes" target="_blank" rel="noreferrer"><svg class="footer-contact-icon" aria-hidden="true"><use href="#i-instagram"/></svg> @expressofr.transportes</a>
-        </div>
-      </div>
+    <div class="shell footer__top">
+      <div class="footer__brand"><img src="/assets/logo-fr.webp" alt="Expresso FR" /><p>Transporte rodoviário dedicado com planejamento, monitoramento e atendimento próximo.</p></div>
+      <div class="footer__cols"><div><h4>Institucional</h4><a href="#inicio">Início</a><a href="#sobre">Sobre</a><a href="#diferenciais">Diferenciais</a></div><div><h4>Solução</h4><a href="#dedicada">Carga dedicada</a><a href="#cotacao">Solicitar cotação</a></div><div><h4>Contato</h4><a href="tel:+5531975535768">(31) 97553-5768</a><a href="mailto:contato@expressofr.com.br">contato@expressofr.com.br</a><a href="https://instagram.com/expressofr.transportes" target="_blank" rel="noreferrer">@expressofr.transportes</a></div></div>
     </div>
-    <div class="shell footer-bottom">
-      <span>© 2026 Expresso FR. Todos os direitos reservados.</span>
-      <span><a href="privacidade.html">Política de Privacidade</a> · <a href="termos.html">Termos de Uso</a></span>
-      <span class="nexor-signature"><a href="https://www.instagram.com/nexor_digital_" target="_blank" rel="noreferrer">Feito por <strong>NEXOR DIGITAL</strong> · 2026 <span class="social-icon social-instagram nexor-instagram" aria-hidden="true"></span></a></span>
-    </div>
+    <div class="shell footer__bottom"><span>© 2026 Expresso FR. Todos os direitos reservados.</span><span><a href="/privacidade.html">Privacidade</a> · <a href="/termos.html">Termos</a></span><a class="nexor" href="https://www.instagram.com/nexor_digital_" target="_blank" rel="noreferrer">Feito por <strong>NEXOR DIGITAL</strong> · 2026</a></div>
   </footer>
 
-  <a class="floating-wa" href="https://wa.me/5531975535768" target="_blank" rel="noreferrer" aria-label="Falar com a Expresso FR no WhatsApp"><span class="social-icon social-whatsapp" aria-hidden="true"></span></a>
+  <a class="floating-wa" href="https://wa.me/5531975535768" target="_blank" rel="noreferrer" aria-label="Falar no WhatsApp"><img src="assets/icons/whatsapp-real-clean-white.png" alt="" class="wa-real wa-real--floating"></a>
 
+  <dialog class="review" id="reviewDialog">
+    <div class="review__card"><div class="review__head"><div><small>Confira antes de enviar</small><h3>Resumo da cotação</h3></div><button type="button" id="reviewClose" aria-label="Fechar">×</button></div><div id="reviewContent" class="review__content"></div><div class="review__actions"><button class="btn btn--outline" type="button" id="reviewEdit">Editar</button><button class="btn btn--green" type="button" id="reviewSend"><img src="assets/icons/whatsapp-real-clean-dark.png" alt="" class="wa-real">Enviar pelo WhatsApp</button></div></div>
+  </dialog>
 
-  <div class="mobile-cta-bar" aria-label="Ações rápidas">
-    <a href="#cotacao" class="mobile-quote"><svg class="icon" aria-hidden="true"><use href="#i-box"/></svg><span>Cotar frete</span></a>
-    <a href="https://wa.me/5531975535768" target="_blank" rel="noreferrer" class="mobile-whatsapp"><span class="social-icon social-whatsapp" aria-hidden="true"></span><span>WhatsApp</span></a>
-  </div>
-
-  <script type="module" src="./script.js"></script>
+  <script type="module" src="/script.js"></script>
 </body>
 </html>

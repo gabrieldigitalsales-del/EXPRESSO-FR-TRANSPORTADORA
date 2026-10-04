@@ -1,14 +1,14 @@
 {
-  "name": "expresso-fr-site",
+  "name": "expresso-fr-nexor",
   "private": true,
-  "version": "26.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
+    "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^6.1.0"
+    "vite": "^5.4.14"
   }
 }
